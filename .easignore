@@ -2,13 +2,8 @@
 
 # dependencies
 node_modules/
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+android/
+ios/
 
 # Expo
 .expo/
@@ -39,15 +34,17 @@ yarn-error.*
 
 # local env files
 .env*.local
+!.env.local
 
 # typescript
 *.tsbuildinfo
 
-app-example
 
-# generated native folders
-/ios
-/android
+### project ###
+*.DS_Store
+
+### history ###
+.history
 
 ### IntelliJ IDEA ###
 .idea
@@ -56,11 +53,4 @@ app-example
 *.ipr
 
 
-### google ###
-google-services.json
-
-
-### AI ###
-.gstack
-.claude
-
+!google-services.json

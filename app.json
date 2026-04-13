@@ -8,7 +8,8 @@
     "scheme": "templateexpoapp",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/expo.icon",
+      "bundleIdentifier": "com.bobpark.template-expo-app"
     },
     "android": {
       "adaptiveIcon": {
@@ -39,6 +40,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "40940bcb-9bde-47c7-be00-49932cb86e70"
+      }
     }
   }
 }
