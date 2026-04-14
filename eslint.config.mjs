@@ -7,5 +7,5 @@ export default defineConfig([
   {
     extends: [eslintConfig],
   },
-  globalIgnores(["**/*.cjs", "**/*.mjs", "**/*.config.js"]),
+  globalIgnores(['**/*.cjs', '**/*.mjs', '**/*.config.js', '**/*.config.ts']),
 ]);
