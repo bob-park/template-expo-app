@@ -42,6 +42,7 @@ export default function Info() {
               <Text
                 className={cx('flex-1 text-[15px] font-semibold', {
                   'text-white dark:text-black': theme === option.key,
+                  'text-black dark:text-white': theme !== option.key,
                 })}
               >
                 {option.label}
