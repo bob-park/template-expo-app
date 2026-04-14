@@ -52,11 +52,11 @@ case $update_type in
         ;;
     "minor")
         new_minor=$((minor + 1))
-        new_version="${major}.${new_minor}"
+        new_version="${major}.${new_minor}.0"
         ;;
     "major")
         new_major=$((major + 1))
-        new_version="${new_major}"
+        new_version="${new_major}.0.0"
         ;;
     *)
         echo -e "${RED}Error: 잘못된 업데이트 타입입니다. [patch|minor|major]${NC}"
