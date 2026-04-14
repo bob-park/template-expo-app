@@ -1,6 +1,7 @@
 import { createContext, useEffect, useMemo, useState } from 'react';
 
 import { TokenResponse, fetchUserInfoAsync, makeRedirectUri, refreshAsync } from 'expo-auth-session';
+import Constants from 'expo-constants';
 import * as SecureStore from 'expo-secure-store';
 import * as WebBrowser from 'expo-web-browser';
 
@@ -18,14 +19,13 @@ const KEY_USER_PROVIDER_ID = 'userProviderId';
 
 WebBrowser.maybeCompleteAuthSession();
 
-export const clientId = process.env.EXPO_PUBLIC_AUTHORIZATION_CLIENT_ID || '';
-export const clientSecret = process.env.EXPO_PUBLIC_AUTHORIZATION_CLIENT_SECRET || '';
+const { host, clientId, clientSecret } = Constants.expoConfig?.extra?.auth ?? {};
 
 export const discovery = {
-  authorizationEndpoint: `${process.env.EXPO_PUBLIC_AUTHORIZATION_SERVER}/oauth2/authorize`,
-  tokenEndpoint: `${process.env.EXPO_PUBLIC_AUTHORIZATION_SERVER}/oauth2/token`,
-  revocationEndpoint: `${process.env.EXPO_PUBLIC_AUTHORIZATION_SERVER}/oauth2/revoke`,
-  userInfoEndpoint: `${process.env.EXPO_PUBLIC_AUTHORIZATION_SERVER}/userinfo`,
+  authorizationEndpoint: `${host}/oauth2/authorize`,
+  tokenEndpoint: `${host}/oauth2/token`,
+  revocationEndpoint: `${host}/oauth2/revoke`,
+  userInfoEndpoint: `${host}/userinfo`,
 };
 
 export const redirectUri = makeRedirectUri({

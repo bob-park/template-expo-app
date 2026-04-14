@@ -1,56 +1,54 @@
 import { createContext, useEffect, useMemo, useState } from 'react';
 
+import { useColorScheme } from 'react-native';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import { useColorScheme } from 'nativewind';
+import { useColorScheme as useNativewindColorSchema } from 'nativewind';
 
 const KEY_THEME_PREFERENCE = 'theme.preference';
 
-type ThemePreference = 'light' | 'dark' | 'unspecified';
-
 interface ThemeContextType {
-  theme: 'dark' | 'light' | 'unspecified';
-  preference: ThemePreference;
-  onUpdatePreference: (preference: ThemePreference) => void;
+  theme: ThemePreference;
+  onUpdateTheme: (theme: ThemePreference) => void;
 }
 
 export const ThemeContext = createContext<ThemeContextType>({
   theme: 'light',
-  preference: 'unspecified',
-  onUpdatePreference: (preference: ThemePreference) => {},
+  onUpdateTheme: (preference: ThemePreference) => {},
 });
 
 export default function ThemeProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   // state
-  const [preference, setPreference] = useState<ThemePreference>('unspecified');
+  const [theme, setTheme] = useState<ThemePreference>('system');
 
   // hooks
-  const { colorScheme, setColorScheme } = useColorScheme();
+  const { colorScheme, setColorScheme } = useNativewindColorSchema();
+  const currentSystemColorScheme = useColorScheme();
 
   // useEffect
   useEffect(() => {
     AsyncStorage.getItem(KEY_THEME_PREFERENCE)
-      .then((data) => (!data ? 'unspecified' : (data as ThemePreference)))
-      .then((preference) => setPreference(preference));
+      .then((data) => (data as ThemePreference) || 'system')
+      .then((preference) => setTheme(preference));
   }, []);
 
   useEffect(() => {
-    setColorScheme(preference === 'unspecified' ? 'unspecified' : preference);
+    setColorScheme(theme === 'system' ? 'unspecified' : theme);
 
     // save
-    AsyncStorage.setItem(KEY_THEME_PREFERENCE, preference);
-  }, [preference, colorScheme]);
+    AsyncStorage.setItem(KEY_THEME_PREFERENCE, theme);
+  }, [theme, currentSystemColorScheme]);
 
   // memorize
   const contextValue = useMemo<ThemeContextType>(
     () => ({
-      theme: colorScheme,
-      preference,
-      onUpdatePreference: (preference: ThemePreference) => {
-        setPreference(preference);
+      theme,
+      onUpdateTheme: (theme: ThemePreference) => {
+        setTheme(theme);
       },
     }),
-    [colorScheme, preference],
+    [colorScheme, theme],
   );
 
   return <ThemeContext value={contextValue}>{children}</ThemeContext>;

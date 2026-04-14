@@ -3,12 +3,13 @@ import { useContext, useEffect, useState } from 'react';
 import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native';
 
 import { exchangeCodeAsync, useAuthRequest } from 'expo-auth-session';
+import Constants from 'expo-constants';
 import * as WebBrowser from 'expo-web-browser';
 
 import { MaterialIcons } from '@expo/vector-icons';
 
 import SplashLottie from '@/assets/lotties/splash-lottie.json';
-import { AuthContext, clientId, clientSecret, discovery, redirectUri } from '@/shared/providers/auth/AuthProvider';
+import { AuthContext, discovery, redirectUri } from '@/shared/providers/auth/AuthProvider';
 import { ThemeContext } from '@/shared/providers/theme/ThemeProvider';
 import delay from '@/utils/delay';
 
@@ -16,6 +17,8 @@ import cx from 'classnames';
 import LottieView from 'lottie-react-native';
 
 WebBrowser.maybeCompleteAuthSession();
+
+const { clientId, clientSecret } = Constants.expoConfig?.extra?.auth ?? {};
 
 export default function LoginPage() {
   // context
