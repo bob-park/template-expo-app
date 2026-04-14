@@ -1,10 +1,11 @@
 import { ConfigContext, ExpoConfig } from 'expo/config';
+import { version } from './package.json';
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'template-expo-app',
   slug: 'template-expo-app',
-  version: '1.0.0',
+  version,
   orientation: 'portrait',
   icon: './assets/images/icon.png',
   scheme: 'templateexpoapp',
