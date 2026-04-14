@@ -89,7 +89,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   extra: {
     router: {},
     eas: {
-      projectId: '40940bcb-9bde-47c7-be00-49932cb86e70',
+      projectId: process.env.EXPO_PUBLIC_EAS_PROJECT_ID,
     },
     auth: {
       host: process.env.AUTHORIZATION_HOST,
