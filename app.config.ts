@@ -1,4 +1,5 @@
 import { ConfigContext, ExpoConfig } from 'expo/config';
+
 import { version } from './package.json';
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
@@ -90,7 +91,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   extra: {
     router: {},
     eas: {
-      projectId: process.env.EXPO_PUBLIC_EAS_PROJECT_ID,
+      projectId: '40940bcb-9bde-47c7-be00-49932cb86e70',
     },
     auth: {
       host: process.env.AUTHORIZATION_HOST,
