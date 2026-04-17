@@ -1,5 +1,3 @@
-import { useContext } from 'react';
-
 import { Platform } from 'react-native';
 
 import { Tabs } from 'expo-router';
@@ -7,11 +5,11 @@ import { NativeTabs } from 'expo-router/unstable-native-tabs';
 
 import { Ionicons } from '@expo/vector-icons';
 
-import { ThemeContext } from '@/shared/providers/theme/ThemeProvider';
-
 import { useColorScheme } from 'nativewind';
+import { useTranslation } from 'react-i18next';
 
 function IOSTabs() {
+  const { t } = useTranslation();
   return (
     <NativeTabs
       backBehavior="history"
@@ -21,27 +19,27 @@ function IOSTabs() {
     >
       <NativeTabs.Trigger name="(home)">
         <NativeTabs.Trigger.Icon sf="house" md="house" drawable="custom_android_drawable" />
-        <NativeTabs.Trigger.Label>홈</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Label>{t('tabs.home')}</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="schedule">
         <NativeTabs.Trigger.Icon sf="calendar" md="calendar_view_day" drawable="custom_android_drawable" />
-        <NativeTabs.Trigger.Label>일정</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Label>{t('tabs.schedule')}</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="notification">
         <NativeTabs.Trigger.Icon sf="bell.fill" md="doorbell" drawable="custom_android_drawable" />
-        <NativeTabs.Trigger.Label>공지</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Label>{t('tabs.notification')}</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="profile">
         <NativeTabs.Trigger.Icon sf="person.fill" md="person" drawable="custom_android_drawable" />
-        <NativeTabs.Trigger.Label>내정보</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Label>{t('tabs.profile')}</NativeTabs.Trigger.Label>
       </NativeTabs.Trigger>
     </NativeTabs>
   );
 }
 
 function AndroidTabs() {
+  const { t } = useTranslation();
   const { colorScheme } = useColorScheme();
-
   const isDark = colorScheme === 'dark';
 
   return (
@@ -57,12 +55,15 @@ function AndroidTabs() {
           backgroundColor: isDark ? '#111111' : '#ffffff',
           borderTopColor: isDark ? '#111111' : '#ffffff',
         },
+        sceneStyle: {
+          backgroundColor: isDark ? '#000000' : '#ffffff',
+        },
       }}
     >
       <Tabs.Screen
         name="(home)"
         options={{
-          title: '홈',
+          title: t('tabs.home'),
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name={focused ? 'home' : 'home-outline'} size={size} color={color} />
           ),
@@ -71,7 +72,7 @@ function AndroidTabs() {
       <Tabs.Screen
         name="schedule"
         options={{
-          title: '일정',
+          title: t('tabs.schedule'),
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name={focused ? 'calendar' : 'calendar-outline'} size={size} color={color} />
           ),
@@ -80,7 +81,7 @@ function AndroidTabs() {
       <Tabs.Screen
         name="notification"
         options={{
-          title: '공지',
+          title: t('tabs.notification'),
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name={focused ? 'notifications' : 'notifications-outline'} size={size} color={color} />
           ),
@@ -89,7 +90,7 @@ function AndroidTabs() {
       <Tabs.Screen
         name="profile"
         options={{
-          title: '내 정보',
+          title: t('tabs.profile'),
           tabBarIcon: ({ focused, color, size }) => (
             <Ionicons name={focused ? 'person' : 'person-outline'} size={size} color={color} />
           ),
