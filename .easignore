@@ -52,11 +52,14 @@ yarn-error.*
 *.iml
 *.ipr
 
-
+### Google ###
 !google-services.json
-
 
 ### AI ###
 .gstack
 .claude
 
+### Project ###
+.mise.toml
+.sdkmanrc
+.impeccable.md
