@@ -90,9 +90,9 @@ export default function LoginPage() {
           }}
         >
           {isLoggingIn ? (
-            <ActivityIndicator size="small" color={theme === 'light' ? '#d1d5db' : '#4b5563'} />
+              <ActivityIndicator size="small" color={theme !== 'light' ? '#d1d5db' : '#4b5563'} />
           ) : (
-            <MaterialIcons name="login" size={24} color={theme === 'light' ? 'white' : 'black'} />
+              <MaterialIcons name="login" size={24} color={theme !== 'light' ? 'white' : 'black'} />
           )}
           <Text className="text-xl font-bold text-white dark:text-black">{isLoggingIn ? '로그인 중' : '로그인'}</Text>
         </TouchableOpacity>
