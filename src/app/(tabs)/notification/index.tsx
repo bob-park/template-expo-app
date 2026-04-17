@@ -2,8 +2,8 @@ import { Text, View } from 'react-native';
 
 export default function Notification() {
   return (
-    <View className="flex size-full items-center justify-center">
-      <Text>notification</Text>
+    <View className="flex size-full items-center justify-center bg-white dark:bg-black">
+      <Text className="text-black dark:text-white">notification</Text>
     </View>
   );
 }

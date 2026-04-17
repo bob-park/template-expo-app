@@ -10,6 +10,8 @@ import NotificationProvider from '@/shared/providers/notification/NotificationPr
 import RQProvider from '@/shared/providers/queries/RQProvider';
 import ThemeProvider from '@/shared/providers/theme/ThemeProvider';
 
+import { useColorScheme } from 'nativewind';
+
 import './global.css';
 
 export { ErrorBoundary } from 'expo-router';
@@ -18,8 +20,12 @@ const RootStackLayout = () => {
   // context
   const { isLoggedIn } = useContext(AuthContext);
 
+  // hooks
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === 'dark';
+
   return (
-    <Stack screenOptions={{ headerShown: false }}>
+    <Stack screenOptions={{ headerShown: false, contentStyle: { backgroundColor: isDark ? '#000000' : '#ffffff' } }}>
       <Stack.Protected guard={isLoggedIn}>
         <Stack.Screen name="(tabs)" />
       </Stack.Protected>
