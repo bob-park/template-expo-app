@@ -1,7 +1,5 @@
 import { createContext, useEffect, useMemo, useState } from 'react';
 
-import { useColorScheme } from 'react-native';
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { useColorScheme as useNativewindColorSchema } from 'nativewind';
@@ -23,8 +21,7 @@ export default function ThemeProvider({ children }: Readonly<{ children: React.R
   const [theme, setTheme] = useState<ThemePreference>('system');
 
   // hooks
-  const { colorScheme, setColorScheme } = useNativewindColorSchema();
-  const currentSystemColorScheme = useColorScheme();
+  const { setColorScheme } = useNativewindColorSchema();
 
   // useEffect
   useEffect(() => {
@@ -38,7 +35,7 @@ export default function ThemeProvider({ children }: Readonly<{ children: React.R
 
     // save
     AsyncStorage.setItem(KEY_THEME_PREFERENCE, theme);
-  }, [theme, currentSystemColorScheme]);
+  }, [theme]);
 
   // memorize
   const contextValue = useMemo<ThemeContextType>(
@@ -48,7 +45,7 @@ export default function ThemeProvider({ children }: Readonly<{ children: React.R
         setTheme(theme);
       },
     }),
-    [colorScheme, theme],
+    [theme],
   );
 
   return <ThemeContext value={contextValue}>{children}</ThemeContext>;
