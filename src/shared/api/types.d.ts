@@ -1,15 +1,28 @@
-interface Page<T> {
+type SearchPageParams = {
+  page: number;
+  size: number;
+};
+
+/**
+ * Page Response
+ */
+interface PageMetadata {
+  size: number;
+  number: number;
+  totalElements: number;
+  totalPages: number;
+}
+
+interface PagedModel<T> {
+  page: PageMetadata;
   content: T[];
-  total: number;
-  pageable: Pageable;
 }
 
-interface Pageable {
-  pageNumber: number;
-  pageSize: number;
-}
-
+/**
+ * Page Request
+ */
 type PageRequest = {
   page: number;
   size: number;
+  sort?: string;
 };
