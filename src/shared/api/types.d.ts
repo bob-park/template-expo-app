@@ -26,3 +26,7 @@ type PageRequest = {
   size: number;
   sort?: string;
 };
+
+interface AuthRequestHeader {
+  accessToken: string;
+}

@@ -55,7 +55,7 @@ export const NotificationContext = createContext<NotificationContextType>({
 
 export default function NotificationProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   // context
-  const { userDetail } = useContext(AuthContext);
+  const { userinfo } = useContext(AuthContext);
 
   // state
   const [userProviderId, setUserProviderId] = useState<string>();
@@ -66,7 +66,7 @@ export default function NotificationProvider({ children }: Readonly<{ children: 
 
   // queries
   const { createUserNotification } = useUserNotification(
-    { userUniqueId: userDetail?.id || '' },
+    { userUniqueId: userinfo?.sub || '' },
     {
       onSuccess: (data) => {
         handleUpdateUserProviderId(data.id);
@@ -102,7 +102,7 @@ export default function NotificationProvider({ children }: Readonly<{ children: 
       responseReceivedListener.remove();
       receivedListener.remove();
     };
-  }, [userDetail]);
+  }, [userinfo]);
 
   // handle
   const handleInit = async () => {

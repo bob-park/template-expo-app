@@ -13,6 +13,7 @@ export function generateAuthHeader(accessToken: string) {
 const index = ky.extend({
   prefix: API_HOST,
   hooks: {
+    beforeRequest: [],
     afterResponse: [({ request, options, response }) => {}],
   },
 });
