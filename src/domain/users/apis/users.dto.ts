@@ -1,3 +1,5 @@
+import { UserRole } from '@/shared/providers/auth/AuthProvider';
+
 interface UserRoleDetail {
   id: string;
   type: UserRole;
@@ -11,3 +13,5 @@ interface UserDetail {
   role: UserRoleDetail;
   email?: string;
 }
+
+export type { UserDetail, UserRoleDetail };

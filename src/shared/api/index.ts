@@ -1,3 +1,4 @@
+import { PagedModel } from '@/shared/api/common.dto';
 import delay from '@/utils/delay';
 
 import ky from 'ky';

@@ -27,6 +27,11 @@ type PageRequest = {
   sort?: string;
 };
 
-interface AuthRequestHeader {
+/**
+ * Auth Request Header
+ */
+type AuthRequestHeader = {
   accessToken: string;
-}
+};
+
+export type { SearchPageParams, PageRequest, PageMetadata, PagedModel, AuthRequestHeader };

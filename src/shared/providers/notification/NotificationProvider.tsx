@@ -12,6 +12,14 @@ import * as SecureStore from 'expo-secure-store';
 import { useUserNotification } from '@/domain/notifications/queries/userNotification';
 import { AuthContext } from '@/shared/providers/auth/AuthProvider';
 
+export interface NotificationMessage {
+  id: string;
+  title: string;
+  message?: string;
+  read: boolean;
+  createdDate: Date;
+}
+
 const KEY_USER_PROVIDER_ID = 'userProviderId';
 
 // custom toast

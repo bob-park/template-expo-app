@@ -6,6 +6,8 @@ import { useColorScheme as useNativewindColorSchema } from 'nativewind';
 
 const KEY_THEME_PREFERENCE = 'theme.preference';
 
+export type ThemePreference = 'light' | 'dark' | 'system';
+
 interface ThemeContextType {
   theme: ThemePreference;
   onUpdateTheme: (theme: ThemePreference) => void;

@@ -18,6 +18,23 @@ const KEY_USER_PROVIDER_ID = 'userProviderId';
 
 WebBrowser.maybeCompleteAuthSession();
 
+export type UserRole = 'ROLE_ADMIN' | 'ROLE_MANAGER' | 'ROLE_USER';
+
+export interface User {
+  id: string;
+  userId: string;
+  username: string;
+  role: UserRole;
+}
+
+export interface UserInfo {
+  sub: string;
+  userId: string;
+  name: string;
+  email: string;
+  role: UserRole;
+}
+
 const { host, clientId, clientSecret } = Constants.expoConfig?.extra?.auth ?? {};
 
 export const discovery = {

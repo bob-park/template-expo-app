@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
+import { NotificationType, UserNotificationProvider } from '@/domain/notifications/apis/notifications.dto';
 import {
   createUserNotification,
   getUserNotifications,

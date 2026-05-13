@@ -1,3 +1,4 @@
+import { NotificationType, UserNotificationProvider } from '@/domain/notifications/apis/notifications.dto';
 import api, { generateAuthHeader } from '@/shared/api';
 
 export async function getUserNotifications({ userUniqueId }: { userUniqueId: string }) {
