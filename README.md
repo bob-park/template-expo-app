@@ -49,15 +49,15 @@ AUTHORIZATION_CLIENT_ID=your-client-id
 AUTHORIZATION_CLIENT_SECRET=your-client-secret
 ```
 
-| 변수                            | 설명                                                             | 사용처                            |
-|-------------------------------|----------------------------------------------------------------|--------------------------------|
-| `EXPO_PUBLIC_API_HOST`        | API 서버 base URL                                                | `src/shared/api/index.ts`      |
+| 변수                          | 설명                                                                | 사용처                         |
+| ----------------------------- | ------------------------------------------------------------------- | ------------------------------ |
+| `EXPO_PUBLIC_API_HOST`        | API 서버 base URL                                                   | `src/shared/api/index.ts`      |
 | `AUTHORIZATION_HOST`          | OAuth2 인증 서버 base URL (`/oauth2/authorize`, `/oauth2/token` 등) | `app.config.ts` → `extra.auth` |
-| `AUTHORIZATION_CLIENT_ID`     | OAuth2 Client ID                                               | `app.config.ts` → `extra.auth` |
-| `AUTHORIZATION_CLIENT_SECRET` | OAuth2 Client Secret                                           | `app.config.ts` → `extra.auth` |
+| `AUTHORIZATION_CLIENT_ID`     | OAuth2 Client ID                                                    | `app.config.ts` → `extra.auth` |
+| `AUTHORIZATION_CLIENT_SECRET` | OAuth2 Client Secret                                                | `app.config.ts` → `extra.auth` |
 
 > ⚠️ `EXPO_PUBLIC_*` 값은 빌드 시 클라이언트 번들에 포함됩니다. `AUTHORIZATION_*` 변수는 `EXPO_PUBLIC_` 접두사가 없으므로 클라이언트 번들에 직접 노출되지 않고
-`app.config.ts`의 `extra` 필드를 통해 런타임에 접근합니다.
+> `app.config.ts`의 `extra` 필드를 통해 런타임에 접근합니다.
 >
 > 환경 변수 변경 후에는 캐시를 비우고 서버를 재시작하세요: `yarn start --clear`
 
@@ -86,14 +86,14 @@ yarn web
 
 ## 스크립트
 
-| Script               | 설명                                          |
-|----------------------|---------------------------------------------|
-| `yarn start`         | Expo 개발 서버 실행                               |
-| `yarn ios`           | iOS 네이티브 빌드 후 실행                            |
-| `yarn android`       | Android 네이티브 빌드 후 실행                        |
-| `yarn web`           | 웹 모드로 실행                                    |
-| `yarn lint`          | ESLint 검사                                   |
-| `yarn prettier`      | Prettier 포맷팅                                |
+| Script               | 설명                                                          |
+| -------------------- | ------------------------------------------------------------- |
+| `yarn start`         | Expo 개발 서버 실행                                           |
+| `yarn ios`           | iOS 네이티브 빌드 후 실행                                     |
+| `yarn android`       | Android 네이티브 빌드 후 실행                                 |
+| `yarn web`           | 웹 모드로 실행                                                |
+| `yarn lint`          | ESLint 검사                                                   |
+| `yarn prettier`      | Prettier 포맷팅                                               |
 | `yarn reset-project` | 스타터 코드를 `app-example`로 이동하고 빈 `app` 디렉토리 생성 |
 
 ## 디렉토리 구조
@@ -158,21 +158,21 @@ src/
 
 ## 라우팅
 
-| 경로                      | 화면          | 접근 조건   |
-|-------------------------|-------------|---------|
-| `/login`                | OAuth 로그인   | 비로그인 상태 |
-| `/callback`             | OAuth 콜백    | 비로그인 상태 |
-| `/(tabs)/(home)`        | 홈           | 로그인 상태  |
-| `/(tabs)/schedule`      | 스케줄         | 로그인 상태  |
-| `/(tabs)/notification`  | 알림 / 공지     | 로그인 상태  |
-| `/(tabs)/profile`       | 사용자 정보 / 설정 | 로그인 상태  |
+| 경로                   | 화면               | 접근 조건     |
+| ---------------------- | ------------------ | ------------- |
+| `/login`               | OAuth 로그인       | 비로그인 상태 |
+| `/callback`            | OAuth 콜백         | 비로그인 상태 |
+| `/(tabs)/(home)`       | 홈                 | 로그인 상태   |
+| `/(tabs)/schedule`     | 스케줄             | 로그인 상태   |
+| `/(tabs)/notification` | 알림 / 공지        | 로그인 상태   |
+| `/(tabs)/profile`      | 사용자 정보 / 설정 | 로그인 상태   |
 
 ## Path Alias
 
 `tsconfig.json`에 다음 경로 별칭이 설정되어 있습니다.
 
-| Alias        | 경로         |
-|--------------|------------|
+| Alias        | 경로       |
+| ------------ | ---------- |
 | `@/*`        | `src/*`    |
 | `@/assets/*` | `assets/*` |
 
@@ -192,21 +192,21 @@ eas build --platform android
 
 빌드 프로필은 `eas.json`에서 관리합니다.
 
-| 프로필           | 용도                            |
-|---------------|-------------------------------|
-| `development` | 개발용 내부 배포 (dev client)        |
+| 프로필        | 용도                                  |
+| ------------- | ------------------------------------- |
+| `development` | 개발용 내부 배포 (dev client)         |
 | `preview`     | 미리보기 (Android APK, iOS 내부 배포) |
-| `production`  | 프로덕션 빌드 (자동 버전 증가)            |
+| `production`  | 프로덕션 빌드 (자동 버전 증가)        |
 
 ### EAS Build 이용하지 않고 로컬에서 빌드하기
 
-* iOS
-    - submit 하려면 반드시 `production` profile로 진행해야 함
-    - `production`으로 진행해도 `.ipa` 파일이 생성되어, 등록된 기기에서 설치 가능
-* Android
-    - submit 하려면 반드시 `production` profile로 진행해야 함
-    - 단, `production` profile로 하면 `.aab` 파일로 생성되어, 사용자가 임의로 설치할 수 없음
-    - `.apk`로 생성하고 싶을 경우 `preview` profile로 진행
+- iOS
+  - submit 하려면 반드시 `production` profile로 진행해야 함
+  - `production`으로 진행해도 `.ipa` 파일이 생성되어, 등록된 기기에서 설치 가능
+- Android
+  - submit 하려면 반드시 `production` profile로 진행해야 함
+  - 단, `production` profile로 하면 `.aab` 파일로 생성되어, 사용자가 임의로 설치할 수 없음
+  - `.apk`로 생성하고 싶을 경우 `preview` profile로 진행
 
 ```bash
 ## iOS submit (반드시 Mac 및 Apple Developer 계정이 필요함)
@@ -232,18 +232,22 @@ eas submit --platform ios --path {빌드파일경로}
 eas submit --platform ios
 ```
 
-
 # `PR` Merge 시 자동 version up 기능
+
 `github workflows` + `github actions` 로 PR 시 자동으로 version up 을 진행한다.
 
 ### version pattern
+
 [major].[minor].[patch]
 
 #### major
+
 PR 제목에 `xxx [major]` 인 경우 major 버전이 `+1` 된다.
 
 #### minor
+
 PR 제목에 `xxx [minor]` 인 경우 minor 버전이 `+1` 된다.
 
 #### patch
+
 PR 제목에 `xxx` 인 경우 patch 버전이 `+1` 된다.

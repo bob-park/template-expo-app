@@ -99,31 +99,35 @@ Rules:
 - Re-export types at the bottom of the file:
 
 ```ts
-interface UserDetail { /* ... */ }
-interface UserRoleDetail { /* ... */ }
+interface UserDetail {
+  /* ... */
+}
+interface UserRoleDetail {
+  /* ... */
+}
 
 export type { UserDetail, UserRoleDetail };
 ```
 
 #### 4.4.2 Naming
 
-| Kind                  | Convention                                    | Example                                |
-|-----------------------|-----------------------------------------------|----------------------------------------|
-| File (module)         | camelCase                                     | `userNotification.ts`                  |
-| File (component)      | PascalCase                                    | `AuthProvider.tsx`, `Loading.tsx`      |
-| DTO file              | `<name>.dto.ts`                               | `users.dto.ts`                         |
-| Type / Interface      | PascalCase                                    | `UserDetail`, `PagedModel`             |
-| Function              | camelCase, verb-first                         | `getUserDetail`, `createUserNotification` |
-| React hook            | `use` + PascalCase noun                       | `useUserNotifications`                 |
-| Constant              | UPPER_SNAKE_CASE                              | `KEY_ACCESS_TOKEN`                     |
-| Route folder (group)  | `(group)` per expo-router                     | `(tabs)`, `(home)`                     |
+| Kind                 | Convention                | Example                                   |
+| -------------------- | ------------------------- | ----------------------------------------- |
+| File (module)        | camelCase                 | `userNotification.ts`                     |
+| File (component)     | PascalCase                | `AuthProvider.tsx`, `Loading.tsx`         |
+| DTO file             | `<name>.dto.ts`           | `users.dto.ts`                            |
+| Type / Interface     | PascalCase                | `UserDetail`, `PagedModel`                |
+| Function             | camelCase, verb-first     | `getUserDetail`, `createUserNotification` |
+| React hook           | `use` + PascalCase noun   | `useUserNotifications`                    |
+| Constant             | UPPER_SNAKE_CASE          | `KEY_ACCESS_TOKEN`                        |
+| Route folder (group) | `(group)` per expo-router | `(tabs)`, `(home)`                        |
 
 도메인/비지니스 라벨 (사용자에게 보이는 텍스트, 한국어 UI 상수)은 한국어로 작성:
 
 ```ts
 const THEME_OPTIONS = [
-  { key: 'light',  label: '밝은 모드' },
-  { key: 'dark',   label: '어두운 모드' },
+  { key: 'light', label: '밝은 모드' },
+  { key: 'dark', label: '어두운 모드' },
   { key: 'system', label: '시스템 설정과 같이' },
 ];
 ```
@@ -196,13 +200,8 @@ import { UserDetail } from '@/domain/users/apis/users.dto';
 import api, { generateAuthHeader } from '@/shared/api';
 import type { AuthRequestHeader } from '@/shared/api/common.dto';
 
-export async function getUserDetail(
-  id: string,
-  { accessToken }: AuthRequestHeader,
-) {
-  return api
-    .get(`api/v1/users/${id}`, { headers: generateAuthHeader(accessToken) })
-    .json<UserDetail>();
+export async function getUserDetail(id: string, { accessToken }: AuthRequestHeader) {
+  return api.get(`api/v1/users/${id}`, { headers: generateAuthHeader(accessToken) }).json<UserDetail>();
 }
 ```
 
@@ -241,7 +240,9 @@ export function useUserNotifications({ userUniqueId }: { userUniqueId?: string }
 Skeleton:
 
 ```tsx
-export const FooContext = createContext<FooContextProps>({ /* defaults */ });
+export const FooContext = createContext<FooContextProps>({
+  /* defaults */
+});
 
 export default function FooProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   // state
@@ -251,16 +252,15 @@ export default function FooProvider({ children }: Readonly<{ children: React.Rea
   // hooks
   // queries
   // useEffect
-  useEffect(() => { /* ... */ }, []);
+  useEffect(() => {
+    /* ... */
+  }, []);
 
   // handle
   const handleChange = (next: string) => setValue(next);
 
   // memorize
-  const memorizeValue = useMemo<FooContextProps>(
-    () => ({ value, onChange: handleChange }),
-    [value],
-  );
+  const memorizeValue = useMemo<FooContextProps>(() => ({ value, onChange: handleChange }), [value]);
 
   return <FooContext value={memorizeValue}>{children}</FooContext>;
 }
@@ -315,14 +315,14 @@ Direct push to `master` / `develop` is forbidden — always via PR.
 
 Prefix-based, lowercase prefix + `:` + concise message:
 
-| Prefix     | Use for                                                            |
-|------------|--------------------------------------------------------------------|
-| `feat`     | new feature                                                        |
-| `refactor` | code restructure without behavior change (rename, extract, etc.)   |
-| `fix`      | bug or issue fix                                                   |
-| `build`    | dependency / package manager changes (yarn, gradle, pods)          |
-| `docs`     | documentation or comment changes                                   |
-| `test`     | add or modify tests                                                |
+| Prefix     | Use for                                                          |
+| ---------- | ---------------------------------------------------------------- |
+| `feat`     | new feature                                                      |
+| `refactor` | code restructure without behavior change (rename, extract, etc.) |
+| `fix`      | bug or issue fix                                                 |
+| `build`    | dependency / package manager changes (yarn, gradle, pods)        |
+| `docs`     | documentation or comment changes                                 |
+| `test`     | add or modify tests                                              |
 
 Examples (한국어 본문 OK, 도메인 맥락 표현):
 
@@ -412,25 +412,30 @@ existing `@AGENTS.md` directive.
 ## Claude Code 전용 규칙
 
 ### Plan Mode
+
 - 큰 변경(파일 3개 이상 / 새 기능 / 마이그레이션)은 plan mode 로 진행한다.
 
 ### Superpowers Skill 사용
+
 - 작업 시작 전 관련 superpowers 스킬(brainstorming / writing-plans /
   systematic-debugging 등) 적용 여부를 확인한다.
 - 다단계 작업은 TodoWrite(Task) 로 진행 상황을 추적한다.
 
 ### Subagent 권고
+
 - 광범위 코드 탐색 → `Explore` subagent.
 - 큰 변경의 구현 계획 → `Plan` subagent.
 - 독립적인 병렬 작업 → 단일 메시지에 여러 Agent 호출.
 
 ### Visual Companion
+
 - AGENTS.md §4.9 디자인 워크플로우를 Claude Code 에서 실행할 때, 시각
   자료가 필요한 단계에 한해 Visual Companion 사용을 제안할 수 있다.
 - AGENTS.md 의 6단계 워크플로우(템플릿 확인 → 목업 → 로컬 서버 → 피드백
   → src 반영 → 서버 정리)가 우선한다.
 
 ### 금지 사항
+
 - 사용자 명시 없이 `git push --force`, 브랜치 삭제, `git reset --hard` 금지.
 - `master` / `develop` 직접 push 금지 (PR 경유).
 - 사용자 명시 없이 secret-bearing 파일(`.env`, `google-services.json`,
