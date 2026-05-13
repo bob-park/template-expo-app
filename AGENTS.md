@@ -123,18 +123,20 @@ Group imports with a blank line between groups, in this order:
 4. Internal `@/` imports
 5. Side-effect imports (`'./global.css'`)
 
-Example (from `src/app/_layout.tsx`):
+Example (from `src/shared/providers/auth/AuthProvider.tsx`):
 
 ```ts
-import { useContext } from 'react';
+import { createContext, useEffect, useMemo, useState } from 'react';
 
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
+import { fetchUserInfoAsync, makeRedirectUri, refreshAsync } from 'expo-auth-session';
+import Constants from 'expo-constants';
+import * as SecureStore from 'expo-secure-store';
 
-import AnimateAppLoader from '@/shared/loaders/app/AnimateAppLoader';
-import AuthProvider, { AuthContext } from '@/shared/providers/auth/AuthProvider';
+import { useQueryClient } from '@tanstack/react-query';
 
-import { useColorScheme } from 'nativewind';
+import { deleteUserNotificationProvider } from '@/domain/notifications/apis/userNotification';
+import dayjs from '@/shared/dayjs';
+import delay from '@/utils/delay';
 ```
 
 ### 4.4 DTO Pattern — `*.dto.ts`
