@@ -80,8 +80,12 @@ Placement rules:
 - Re-export types at the bottom of the file:
 
 ```ts
-interface UserDetail { /* ... */ }
-interface UserRoleDetail { /* ... */ }
+interface UserDetail {
+  /* ... */
+}
+interface UserRoleDetail {
+  /* ... */
+}
 
 export type { UserDetail, UserRoleDetail };
 ```
@@ -89,7 +93,7 @@ export type { UserDetail, UserRoleDetail };
 ### 4.2 Naming
 
 | Kind                 | Convention                | Example                                   |
-|----------------------|---------------------------|-------------------------------------------|
+| -------------------- | ------------------------- | ----------------------------------------- |
 | File (module)        | camelCase                 | `userNotification.ts`                     |
 | File (component)     | PascalCase                | `AuthProvider.tsx`, `Loading.tsx`         |
 | DTO file             | `<name>.dto.ts`           | `users.dto.ts`                            |
@@ -103,8 +107,8 @@ export type { UserDetail, UserRoleDetail };
 
 ```ts
 const THEME_OPTIONS = [
-  { key: 'light',  label: '밝은 모드' },
-  { key: 'dark',   label: '어두운 모드' },
+  { key: 'light', label: '밝은 모드' },
+  { key: 'dark', label: '어두운 모드' },
   { key: 'system', label: '시스템 설정과 같이' },
 ];
 ```
@@ -127,7 +131,6 @@ import { useContext } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
-import '@/app/global.css';
 import AnimateAppLoader from '@/shared/loaders/app/AnimateAppLoader';
 import AuthProvider, { AuthContext } from '@/shared/providers/auth/AuthProvider';
 
@@ -177,13 +180,8 @@ import { UserDetail } from '@/domain/users/apis/users.dto';
 import api, { generateAuthHeader } from '@/shared/api';
 import type { AuthRequestHeader } from '@/shared/api/common.dto';
 
-export async function getUserDetail(
-  id: string,
-  { accessToken }: AuthRequestHeader,
-) {
-  return api
-    .get(`api/v1/users/${id}`, { headers: generateAuthHeader(accessToken) })
-    .json<UserDetail>();
+export async function getUserDetail(id: string, { accessToken }: AuthRequestHeader) {
+  return api.get(`api/v1/users/${id}`, { headers: generateAuthHeader(accessToken) }).json<UserDetail>();
 }
 ```
 
@@ -225,7 +223,9 @@ export function useUserNotifications({ userUniqueId }: { userUniqueId?: string }
 Skeleton:
 
 ```tsx
-export const FooContext = createContext<FooContextProps>({ /* defaults */ });
+export const FooContext = createContext<FooContextProps>({
+  /* defaults */
+});
 
 export default function FooProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   // state
@@ -235,16 +235,15 @@ export default function FooProvider({ children }: Readonly<{ children: React.Rea
   // hooks
   // queries
   // useEffect
-  useEffect(() => { /* ... */ }, []);
+  useEffect(() => {
+    /* ... */
+  }, []);
 
   // handle
   const handleChange = (next: string) => setValue(next);
 
   // memorize
-  const memorizeValue = useMemo<FooContextProps>(
-    () => ({ value, onChange: handleChange }),
-    [value],
-  );
+  const memorizeValue = useMemo<FooContextProps>(() => ({ value, onChange: handleChange }), [value]);
 
   return <FooContext value={memorizeValue}>{children}</FooContext>;
 }
@@ -300,7 +299,7 @@ Direct push to `master` / `develop` is forbidden — always via PR.
 Lowercase prefix + `:` + concise message.
 
 | Prefix     | Use for                                                          |
-|------------|------------------------------------------------------------------|
+| ---------- | ---------------------------------------------------------------- |
 | `feat`     | new feature                                                      |
 | `refactor` | code restructure without behavior change (rename, extract, etc.) |
 | `fix`      | bug or issue fix                                                 |
