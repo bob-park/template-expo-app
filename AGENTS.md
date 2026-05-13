@@ -289,12 +289,25 @@ export default function FooProvider({ children }: Readonly<{ children: React.Rea
 - `master` — production-ready. Releases cut from here.
   - Every release creates a git tag (`vX.Y.Z`) and a GitHub release.
 - `develop` — integration branch for the next release.
-- `feature/<short-slug>` — new feature work; branch from `develop`,
+- `feature/<topic>` — new feature work; branch from `develop`,
   merge back into `develop` via PR.
-- `hotfix/<short-slug>` — urgent fix on a released version; branch from
+- `hotfix/<topic>` — urgent fix on a released version; branch from
   `master`, merge into both `master` and `develop`.
 
 Direct push to `master` / `develop` is forbidden — always via PR.
+
+### Rules
+
+- Use lowercase, kebab-case for `<topic>` (e.g., `feature/asset-upload`,
+  `hotfix/jwt-scope-mapping`).
+- When opening a PR from a `feature/*` branch, the base branch **MUST**
+  be `develop`. Targeting `master` directly is not allowed for feature
+  work; promotion to `master` happens through a separate `develop` →
+  `master` release PR.
+- Do not commit directly to `master` or `develop` — always go through a
+  PR.
+- A tag is created on `master` when a release ships; tag name follows
+  the version pattern in §6.
 
 ## 6. Commit Message Convention
 
