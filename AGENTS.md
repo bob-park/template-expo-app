@@ -295,12 +295,14 @@ React 컴포넌트, 커스텀 hook (`useXxx.tsx`), shared provider 의 함수
 1. `// ref` — `useRef`
 2. `// context` — `useContext`
 3. `// state` — `useState`, `useReducer`
-4. `// queries` — React Query hook (`useXxx({...})`, mutation hook 포함)
-5. `// useEffect`
-6. `// useLayoutEffect`
-7. `// handle` — 이벤트 핸들러 / 액션 함수 (`handleXxx`) 등 일반 함수
-8. `// memorize` — `useMemo`
-9. `// callback` — `useCallback`
+4. `// store` — Zustand selector (사용 시에만)
+5. `// hooks` — 그 외 커스텀 hook 호출 (`useRouter`, `useColorScheme` 등)
+6. `// queries` — React Query hook (`useXxx({...})`, mutation hook 포함)
+7. `// useEffect`
+8. `// useLayoutEffect`
+9. `// handle` — 이벤트 핸들러 / 액션 함수 (`handleXxx`) 등 일반 함수
+10. `// memorize` — `useMemo`
+11. `// callback` — `useCallback`
 
 같은 섹션 안에서는 여러 줄을 자유롭게 작성한다. 같은 파일에 co-locate
 된 sub-component (예: `UserList.tsx` 의 `UserItem`) 도 동일 규칙을 따른다.
@@ -310,7 +312,7 @@ React 컴포넌트, 커스텀 hook (`useXxx.tsx`), shared provider 의 함수
 ```tsx
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 
-import { View } from 'react-native';
+import { View, useColorScheme } from 'react-native';
 
 import { useContents } from '@/domain/contents/queries/contents';
 import { ContentsContext } from '@/shared/providers/contents/ContentsProvider';
@@ -324,6 +326,9 @@ export default function Contents() {
 
   // state
   const [open, setOpen] = useState<boolean>(false);
+
+  // hooks
+  const scheme = useColorScheme();
 
   // queries
   const { list, isLoading } = useContents({ size: 10, page: 0 });

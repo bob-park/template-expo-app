@@ -29,28 +29,30 @@ where each block of hooks belongs.
 
 ## 3. Decisions
 
-| # | Decision | Rationale |
-|---|----------|-----------|
-| D1 | Scope = all RN components, custom hooks (`useXxx.tsx`), shared providers under `src/` | No RSC in this project; uniform application is simpler than carving out screens. |
-| D2 | Replace §4.7's section list with a pointer to the new §4.11 | One source of truth; avoids drift between two near-duplicate lists. |
-| D3 | Drop `// store` from the canonical list | Zustand is not in the stack (`package.json` has no `zustand`). Re-add only if/when a store library lands. |
-| D4 | Place the rule as a new §4.11 at the end of §4 (Coding Conventions) | Cross-cutting convention; doesn't belong inside any single existing subsection. |
-| D5 | §4.8 (Screen Components) gets a one-line pointer to §4.11 | Makes scope explicit so screens aren't read as exempt. |
-| D6 | No bulk migration — opportunistic cleanup only, same PR as the touching work | Matches the wording in the original draft and keeps the change reviewable. |
+| #   | Decision                                                                              | Rationale                                                                                                                                                                                                                                                                                                                        |
+| --- | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| D1  | Scope = all RN components, custom hooks (`useXxx.tsx`), shared providers under `src/` | No RSC in this project; uniform application is simpler than carving out screens.                                                                                                                                                                                                                                                 |
+| D2  | Replace §4.7's section list with a pointer to the new §4.11                           | One source of truth; avoids drift between two near-duplicate lists.                                                                                                                                                                                                                                                              |
+| D3  | Keep `// store` and `// hooks` slots in the canonical list                            | `// store` documents the Zustand selector slot for future use (`사용 시에만`). `// hooks` covers the residual category — custom hooks that aren't refs / context / state / queries (e.g. `useColorScheme`, `useRouter`). Both slots are omitted from a function body that doesn't use them, per the "omit unused sections" rule. |
+| D4  | Place the rule as a new §4.11 at the end of §4 (Coding Conventions)                   | Cross-cutting convention; doesn't belong inside any single existing subsection.                                                                                                                                                                                                                                                  |
+| D5  | §4.8 (Screen Components) gets a one-line pointer to §4.11                             | Makes scope explicit so screens aren't read as exempt.                                                                                                                                                                                                                                                                           |
+| D6  | No bulk migration — opportunistic cleanup only, same PR as the touching work          | Matches the wording in the original draft and keeps the change reviewable.                                                                                                                                                                                                                                                       |
 
-## 4. Canonical section order (9 sections)
+## 4. Canonical section order (11 sections)
 
 In fixed order. **Omit unused sections — never leave an empty header.**
 
 1. `// ref` — `useRef`
 2. `// context` — `useContext`
 3. `// state` — `useState`, `useReducer`
-4. `// queries` — React Query hook (`useXxx({...})`, mutation hook 포함)
-5. `// useEffect`
-6. `// useLayoutEffect`
-7. `// handle` — 이벤트 핸들러 / 액션 함수 (`handleXxx`) 등 일반 함수
-8. `// memorize` — `useMemo`
-9. `// callback` — `useCallback`
+4. `// store` — Zustand selector (사용 시에만)
+5. `// hooks` — 그 외 커스텀 hook 호출 (`useRouter`, `useColorScheme` 등)
+6. `// queries` — React Query hook (`useXxx({...})`, mutation hook 포함)
+7. `// useEffect`
+8. `// useLayoutEffect`
+9. `// handle` — 이벤트 핸들러 / 액션 함수 (`handleXxx`) 등 일반 함수
+10. `// memorize` — `useMemo`
+11. `// callback` — `useCallback`
 
 Within a single section, multiple lines are free-form. Co-located
 sub-components in the same file (e.g. `UserItem` inside `UserList.tsx`)
@@ -76,12 +78,14 @@ React 컴포넌트, 커스텀 hook (`useXxx.tsx`), shared provider 의 함수
 1. `// ref` — `useRef`
 2. `// context` — `useContext`
 3. `// state` — `useState`, `useReducer`
-4. `// queries` — React Query hook (`useXxx({...})`, mutation hook 포함)
-5. `// useEffect`
-6. `// useLayoutEffect`
-7. `// handle` — 이벤트 핸들러 / 액션 함수 (`handleXxx`) 등 일반 함수
-8. `// memorize` — `useMemo`
-9. `// callback` — `useCallback`
+4. `// store` — Zustand selector (사용 시에만)
+5. `// hooks` — 그 외 커스텀 hook 호출 (`useRouter`, `useColorScheme` 등)
+6. `// queries` — React Query hook (`useXxx({...})`, mutation hook 포함)
+7. `// useEffect`
+8. `// useLayoutEffect`
+9. `// handle` — 이벤트 핸들러 / 액션 함수 (`handleXxx`) 등 일반 함수
+10. `// memorize` — `useMemo`
+11. `// callback` — `useCallback`
 
 같은 섹션 안에서는 여러 줄을 자유롭게 작성한다. 같은 파일에 co-locate
 된 sub-component (예: `UserList.tsx` 의 `UserItem`) 도 동일 규칙을 따른다.
@@ -91,10 +95,10 @@ React 컴포넌트, 커스텀 hook (`useXxx.tsx`), shared provider 의 함수
 ```tsx
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 
-import { View } from 'react-native';
+import { View, useColorScheme } from 'react-native';
 
-import { ContentsContext } from '@/shared/providers/contents/ContentsProvider';
 import { useContents } from '@/domain/contents/queries/contents';
+import { ContentsContext } from '@/shared/providers/contents/ContentsProvider';
 
 export default function Contents() {
   // ref
@@ -105,6 +109,9 @@ export default function Contents() {
 
   // state
   const [open, setOpen] = useState<boolean>(false);
+
+  // hooks
+  const scheme = useColorScheme();
 
   // queries
   const { list, isLoading } = useContents({ size: 10, page: 0 });
@@ -146,9 +153,9 @@ Replace the existing section-comments bullet:
 > `Group blocks inside the component with **section comments** per §4.11.`
 
 Also reorder the `FooProvider` skeleton example in §4.7 to match
-§4.11: `// context` precedes `// state`; the `// hooks` block is
-removed (its content gets split among `// ref`, `// context`, and
-`// callback` depending on what each hook is).
+§4.11 (e.g. `// context` precedes `// state`) and drop any empty
+section headers from the skeleton per the "omit unused sections"
+rule.
 
 ### 5.3 Update §4.8 (Screen Components)
 
@@ -165,8 +172,10 @@ A reader following only `AGENTS.md` should be able to:
 - [ ] Understand that screen components (§4.8) are in scope.
 - [ ] Understand the migration policy (opportunistic, not bulk).
 - [ ] Use the §4.11 example as a copy-paste starting point without
-      references to libraries that aren't in the stack (no Zustand,
-      no `'use client'`).
+      imports for libraries that aren't in the stack (no `useStore` /
+      Zustand import, no `'use client'`). The `// store` slot is
+      mentioned in the canonical list with a "사용 시에만" caveat but
+      is absent from the example body.
 
 ## 7. Out of scope (deferred)
 
@@ -175,9 +184,9 @@ A reader following only `AGENTS.md` should be able to:
 - **Migrating existing files** under `src/shared/providers/`,
   `src/domain/*/queries/`, and `src/app/`. They follow the opportunistic
   policy in §4.11.
-- **Re-adding `// store`** if/when a store library (e.g. Zustand) is
-  introduced. The slot would be inserted between `// state` and
-  `// queries`.
+- **Adopting Zustand** (or any other store library). The `// store`
+  slot is documented for forward-compatibility but is not used until
+  a store library is actually added to the stack.
 
 ## 8. Verification
 
