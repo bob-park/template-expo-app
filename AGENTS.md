@@ -312,10 +312,12 @@ React 컴포넌트, 커스텀 hook (`useXxx.tsx`), shared provider 의 함수
 ```tsx
 import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 
-import { View, useColorScheme } from 'react-native';
+import { View } from 'react-native';
 
 import { useContents } from '@/domain/contents/queries/contents';
 import { ContentsContext } from '@/shared/providers/contents/ContentsProvider';
+
+import { useColorScheme } from 'nativewind';
 
 export default function Contents() {
   // ref
@@ -328,7 +330,7 @@ export default function Contents() {
   const [open, setOpen] = useState<boolean>(false);
 
   // hooks
-  const scheme = useColorScheme();
+  const { colorScheme } = useColorScheme();
 
   // queries
   const { list, isLoading } = useContents({ size: 10, page: 0 });
