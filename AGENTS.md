@@ -217,9 +217,7 @@ export function useUserNotifications({ userUniqueId }: { userUniqueId?: string }
 
 - `default export` is the Provider component.
 - Named export the `Context` and any public types.
-- Group blocks inside the component with **Korean section comments**:
-  `// state`, `// context`, `// hooks`, `// queries`, `// useEffect`,
-  `// handle`, `// memorize`.
+- Group blocks inside the component with **section comments** per §4.11.
 - Wrap the context value with `useMemo`.
 
 Skeleton:
@@ -233,9 +231,6 @@ export default function FooProvider({ children }: Readonly<{ children: React.Rea
   // state
   const [value, setValue] = useState<string>('');
 
-  // context
-  // hooks
-  // queries
   // useEffect
   useEffect(() => {
     /* ... */
@@ -257,6 +252,7 @@ export default function FooProvider({ children }: Readonly<{ children: React.Rea
 - Use NativeWind `className` for styling.
 - Conditional classes via `classnames` (`import cx from 'classnames'`).
 - Korean text for user-visible 한국어 라벨; English for code identifiers.
+- Section comments follow §4.11.
 
 ```tsx
 <TouchableOpacity
@@ -280,8 +276,8 @@ export default function FooProvider({ children }: Readonly<{ children: React.Rea
 ### 4.10 Comments
 
 - Default: write none. Identifier names should carry the meaning.
-- Permitted: section markers inside Providers (see §4.7), and one-line
-  Korean comments for non-obvious 비지니스 reasoning.
+- Permitted: section markers per §4.11, and one-line Korean comments
+  for non-obvious 비지니스 reasoning.
 - Never narrate WHAT the code does.
 
 ### 4.11 Section Comments
