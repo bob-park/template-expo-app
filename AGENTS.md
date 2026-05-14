@@ -284,6 +284,75 @@ export default function FooProvider({ children }: Readonly<{ children: React.Rea
   Korean comments for non-obvious 비지니스 reasoning.
 - Never narrate WHAT the code does.
 
+### 4.11 Section Comments
+
+React 컴포넌트, 커스텀 hook (`useXxx.tsx`), shared provider 의 함수
+본문은 아래 섹션 주석으로 구분한다. **순서는 고정**이며 사용하지 않는
+섹션은 주석을 **생략**한다 (빈 헤더를 남기지 않는다).
+
+순서:
+
+1. `// ref` — `useRef`
+2. `// context` — `useContext`
+3. `// state` — `useState`, `useReducer`
+4. `// queries` — React Query hook (`useXxx({...})`, mutation hook 포함)
+5. `// useEffect`
+6. `// useLayoutEffect`
+7. `// handle` — 이벤트 핸들러 / 액션 함수 (`handleXxx`) 등 일반 함수
+8. `// memorize` — `useMemo`
+9. `// callback` — `useCallback`
+
+같은 섹션 안에서는 여러 줄을 자유롭게 작성한다. 같은 파일에 co-locate
+된 sub-component (예: `UserList.tsx` 의 `UserItem`) 도 동일 규칙을 따른다.
+
+표준 예시:
+
+```tsx
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+
+import { View } from 'react-native';
+
+import { useContents } from '@/domain/contents/queries/contents';
+import { ContentsContext } from '@/shared/providers/contents/ContentsProvider';
+
+export default function Contents() {
+  // ref
+  const containerRef = useRef<View>(null);
+
+  // context
+  const { contents } = useContext(ContentsContext);
+
+  // state
+  const [open, setOpen] = useState<boolean>(false);
+
+  // queries
+  const { list, isLoading } = useContents({ size: 10, page: 0 });
+
+  // useEffect
+  useEffect(() => {
+    // ...
+  }, [open]);
+
+  // handle
+  const handleClick = () => {
+    // ...
+  };
+
+  // memorize
+  const memoized = useMemo(() => heavy(list), [list]);
+
+  // callback
+  const handleSelect = useCallback((id: string) => {
+    // ...
+  }, []);
+
+  return <View>...</View>;
+}
+```
+
+기존 파일은 일괄 마이그레이션하지 않는다. 해당 파일을 다른 작업으로
+수정할 때 같은 PR 안에서 점진적으로 정리한다.
+
 ## 5. Branch Naming Convention
 
 - `master` — production-ready. Releases cut from here.
