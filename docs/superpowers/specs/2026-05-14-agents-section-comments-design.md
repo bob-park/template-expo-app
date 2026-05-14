@@ -97,10 +97,10 @@ import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'r
 
 import { View } from 'react-native';
 
+import { useColorScheme } from 'nativewind';
+
 import { useContents } from '@/domain/contents/queries/contents';
 import { ContentsContext } from '@/shared/providers/contents/ContentsProvider';
-
-import { useColorScheme } from 'nativewind';
 
 export default function Contents() {
   // ref
