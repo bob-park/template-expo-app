@@ -32,9 +32,9 @@
 
 ### Visual Companion
 
-- AGENTS.md §9 디자인 워크플로우를 Claude Code 에서 실행할 때, 시각
+- [디자인 워크플로우](docs/agents/workflows/design-workflow.md) 를 Claude Code 에서 실행할 때, 시각
   자료가 필요한 단계에 한해 Visual Companion 사용을 제안할 수 있다.
-- AGENTS.md 의 6 단계 워크플로우(템플릿 확인 → 목업 → 로컬 서버 →
+- design-workflow.md 의 6 단계 워크플로우(템플릿 확인 → 목업 → 로컬 서버 →
   피드백 → src 반영 → 서버 정리)가 항상 우선한다.
 - 최종 합의된 디자인만 `src/` 에 반영한다.
 
