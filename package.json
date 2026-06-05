@@ -74,7 +74,7 @@
   },
   "devDependencies": {
     "@bob-park/eslint-config-bobpark": "^0.2.4-RC1-20251111",
-    "@bob-park/prettier-config-bobpark": "^0.3.1-RC1-20250912",
+    "@bob-park/prettier-config-bobpark": "^0.3.2-RC2-20250912",
     "@tailwindcss/postcss": "^4.2.2",
     "@types/lodash": "^4",
     "@types/react": "~19.2.2",
@@ -87,6 +87,6 @@
     "lightningcss": "1.30.1"
   },
   "private": true,
-  "packageManager": "yarn@4.13.0",
+  "packageManager": "yarn@4.14.1",
   "prettier": "@bob-park/prettier-config-bobpark"
 }
