@@ -63,7 +63,7 @@ export const NotificationContext = createContext<NotificationContextType>({
 
 export default function NotificationProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   // context
-  const { userinfo } = useContext(AuthContext);
+  const { userinfo, isLoggedIn } = useContext(AuthContext);
 
   // state
   const [userProviderId, setUserProviderId] = useState<string>();
@@ -148,7 +148,8 @@ export default function NotificationProvider({ children }: Readonly<{ children: 
       .then((data) => data.data)
       .catch((err) => console.error(err));
 
-    createUserNotification({ type: Device.osName === 'iOS' ? 'IOS' : 'ANDROID', notificationToken: token || '' });
+    isLoggedIn &&
+      createUserNotification({ type: Device.osName === 'iOS' ? 'IOS' : 'ANDROID', notificationToken: token || '' });
   };
 
   const handleUpdateUserProviderId = (id: string) => {

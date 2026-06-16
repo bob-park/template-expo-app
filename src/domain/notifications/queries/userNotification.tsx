@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { NotificationType, UserNotificationProvider } from '@/domain/notifications/apis/notifications.dto';
@@ -6,15 +8,18 @@ import {
   getUserNotifications,
   updateUserNotificationProvider,
 } from '@/domain/notifications/apis/userNotification';
+import { AuthContext } from '@/shared/providers/auth/AuthProvider';
 
 export function useUserNotification(
   { userUniqueId }: { userUniqueId: string },
   { onSuccess }: QueryMutationHandle<UserNotificationProvider>,
 ) {
+  const { accessToken } = useContext(AuthContext);
+
   const { mutate, isPending } = useMutation({
     mutationKey: ['users', userUniqueId, 'notification', 'create'],
     mutationFn: (req: { type: NotificationType; notificationToken: string }) =>
-      createUserNotification({ ...req, userUniqueId }),
+      createUserNotification({ accessToken }, { ...req, userUniqueId }),
     onSuccess: (data) => {
       onSuccess && onSuccess(data);
     },

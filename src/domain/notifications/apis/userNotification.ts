@@ -1,21 +1,26 @@
 import { NotificationType, UserNotificationProvider } from '@/domain/notifications/apis/notifications.dto';
 import api, { generateAuthHeader } from '@/shared/api';
+import { AuthRequestHeader } from '@/shared/api/common.dto';
 
 export async function getUserNotifications({ userUniqueId }: { userUniqueId: string }) {
   return api.get(`api/v1/users/${userUniqueId}/notification`).json<UserNotificationProvider[]>();
 }
 
-export async function createUserNotification({
-  userUniqueId,
-  type,
-  notificationToken,
-}: {
-  userUniqueId: string;
-  type: NotificationType;
-  notificationToken: string;
-}) {
+export async function createUserNotification(
+  { accessToken }: AuthRequestHeader,
+  {
+    userUniqueId,
+    type,
+    notificationToken,
+  }: {
+    userUniqueId: string;
+    type: NotificationType;
+    notificationToken: string;
+  },
+) {
   return api
     .post(`api/v1/users/${userUniqueId}/notification`, {
+      headers: generateAuthHeader(accessToken),
       json: { type, options: { token: notificationToken } },
     })
     .json<UserNotificationProvider>();
