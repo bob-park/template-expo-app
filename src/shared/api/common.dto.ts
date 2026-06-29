@@ -28,10 +28,23 @@ type PageRequest = {
 };
 
 /**
+ * ProblemDetail
+ */
+type ProblemDetail = {
+  type: string;
+  title: string;
+  status: number;
+  detail: string;
+  code: string;
+  timestamp: Date;
+  exception: string;
+};
+
+/**
  * Auth Request Header
  */
 type AuthRequestHeader = {
   accessToken: string;
 };
 
-export type { SearchPageParams, PageRequest, PageMetadata, PagedModel, AuthRequestHeader };
+export type { SearchPageParams, PageRequest, PageMetadata, PagedModel, AuthRequestHeader, ProblemDetail };

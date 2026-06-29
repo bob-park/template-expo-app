@@ -36,7 +36,7 @@ export async function getUserDetail(id: string, { accessToken }: AuthRequestHead
 - 파일 확장자는 `.tsx` (기존 convention).
 - Hook 이름: `use<Action><Noun>` (예: `useUserNotifications`, `useUpdateUserNotification`).
 - Query key shape: `[<resource>, <id>, <subresource>, <action?>]`, 예: `['users', userUniqueId, 'notifications', 'providers']`.
-- Mutation hook 은 두 번째 인자 `{ onSuccess, onError }: QueryMutationHandle<T>` 를 받는다 (shared type: `src/shared/queries/types.d.ts`).
+- Mutation hook 은 두 번째 인자 `{ onSuccess, onError }: QueryMutationHandle<T>` 를 받는다 (shared type: `src/shared/queries/index.ts`).
 - `mutate`/`isPending` 을 action-named 키로 rename 한 객체를 반환한다.
 
 ```tsx

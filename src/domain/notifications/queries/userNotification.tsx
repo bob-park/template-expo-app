@@ -9,6 +9,7 @@ import {
   updateUserNotificationProvider,
 } from '@/domain/notifications/apis/userNotification';
 import { AuthContext } from '@/shared/providers/auth/AuthProvider';
+import { QueryMutationHandle } from '@/shared/queries';
 
 export function useUserNotification(
   { userUniqueId }: { userUniqueId: string },

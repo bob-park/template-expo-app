@@ -1201,7 +1201,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bob-park/prettier-config-bobpark@npm:^0.3.2-RC2-20250912":
+"@bob-park/prettier-config-bobpark@npm:^0.3.2-RC2-20260605":
   version: 0.3.2-RC2-20260605
   resolution: "@bob-park/prettier-config-bobpark@npm:0.3.2-RC2-20260605::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40bob-park%2Fprettier-config-bobpark%2F0.3.2-RC2-20260605%2Fcc14fa24aadf48b1d02c190792ccfe01d80cd95b"
   dependencies:
@@ -2044,21 +2044,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lottiefiles/dotlottie-react@npm:^0.18.10":
-  version: 0.18.10
-  resolution: "@lottiefiles/dotlottie-react@npm:0.18.10"
+"@lottiefiles/dotlottie-react@npm:^0.19.5":
+  version: 0.19.5
+  resolution: "@lottiefiles/dotlottie-react@npm:0.19.5"
   dependencies:
-    "@lottiefiles/dotlottie-web": "npm:0.70.0"
+    "@lottiefiles/dotlottie-web": "npm:0.75.0"
   peerDependencies:
     react: ^17 || ^18 || ^19
-  checksum: 10c0/5cd7350dbe44717bb920dd6534a9826a801128f396853c04371b05b0adb34a2a8b62b33f5c44f50597f5f32919f47ba22c24f9ee0276cc67b9feb7d6db7a15c9
+  checksum: 10c0/2cefd443a533c2cf960346deb0bdb0d5589a49e23edd2ff5ffd4aca1c22b7a866c90ee0a38bf103143a7453636077e61df78b80aa9f7c0e02a77bf195a11016c
   languageName: node
   linkType: hard
 
-"@lottiefiles/dotlottie-web@npm:0.70.0":
-  version: 0.70.0
-  resolution: "@lottiefiles/dotlottie-web@npm:0.70.0"
-  checksum: 10c0/814df634325393c376d05541f4c3e1e92b383c16f9673e443c671fbaef5414fa9da0d4bcfc1453d6ffe2390c82f79cf68e04785a66ba75a030d3d9d3cd799aa2
+"@lottiefiles/dotlottie-web@npm:0.75.0":
+  version: 0.75.0
+  resolution: "@lottiefiles/dotlottie-web@npm:0.75.0"
+  checksum: 10c0/355d93f5147a6dc4547d81aa1e9fbfa70711531ff9cb97295f52e1b715790d6f361b45385ea8d02bef043ae484f51fd3f3984c469d23011ae01ddeba24e492d4
   languageName: node
   linkType: hard
 
@@ -4978,10 +4978,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:^1.11.20":
-  version: 1.11.20
-  resolution: "dayjs@npm:1.11.20"
-  checksum: 10c0/8af525e2aa100c8db9923d706c42b2b2d30579faf89456619413a5c10916efc92c2b166e193c27c02eb3174b30aa440ee1e7b72b0a2876b3da651d204db848a0
+"dayjs@npm:^1.11.21":
+  version: 1.11.21
+  resolution: "dayjs@npm:1.11.21"
+  checksum: 10c0/bd97dfdc4bfea3c66268635690313828b386faa040fbc1f829ff42a2bd748b72c9d9b3c8f9616ce9e61fcb78923f1461a462c969c54b1084458ae1b715898fb0
   languageName: node
   linkType: hard
 
@@ -7064,17 +7064,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"i18next@npm:^26.0.5":
-  version: 26.0.5
-  resolution: "i18next@npm:26.0.5"
-  dependencies:
-    "@babel/runtime": "npm:^7.29.2"
+"i18next@npm:^26.3.3":
+  version: 26.3.3
+  resolution: "i18next@npm:26.3.3"
   peerDependencies:
     typescript: ^5 || ^6
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10c0/4e4f7801c4caff597a2c454c3405f3e151a64bcd22424d5671041eaebeaaa8c964804aa5ea36eb512c616f6334d6e671b02174c7abefebbe31487b0fc3d07244
+  checksum: 10c0/7a6676a8bade1683d23c3187b92d571528eeadf9f3d6776b4ef1bd27789d2ee7594a9aa7ca05394d8e11c931c8c8f224d85b2b5059a5613cb79b04b8d46a291e
   languageName: node
   linkType: hard
 
@@ -7796,10 +7794,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ky@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "ky@npm:2.0.0"
-  checksum: 10c0/4ee3d9c609bac32a6ef570ee1d6fabc4226564f56328c96df218f3cf7c6852a42b8b17d232c82e990d21f2205cb0812db279b9caf59da70f894d8f42d4a9103d
+"ky@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "ky@npm:2.0.2"
+  checksum: 10c0/5bac227454193003c819eed5a26b30ae9ac639648be2944547f1aad204a470261ae2a8f7537dac0fd4a6433264bb8f1081b25411bfb49ef5d05a0e21d18b2ab9
   languageName: node
   linkType: hard
 
@@ -8038,9 +8036,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lottie-react-native@npm:^7.3.6":
-  version: 7.3.6
-  resolution: "lottie-react-native@npm:7.3.6"
+"lottie-react-native@npm:^7.3.8":
+  version: 7.3.8
+  resolution: "lottie-react-native@npm:7.3.8"
   peerDependencies:
     "@lottiefiles/dotlottie-react": ^0.13.5
     react: "*"
@@ -8051,7 +8049,7 @@ __metadata:
       optional: true
     react-native-windows:
       optional: true
-  checksum: 10c0/1e3c0d0e763f0021c14bc85f90a9fe45ad4fa446db8961c3153507b271b1029b9095656924a553dafdff6987120d220c054772ff5efaf002b2eb567fe74e3533
+  checksum: 10c0/19cb5561a4d75d3bc2e2d2e09e328802c96e7724bd4804383331162cc7e3d584c5f45a90dbd5909e3fe93a294dd50f4a0ff517e1ab8450213b789a64f814440d
   languageName: node
   linkType: hard
 
@@ -8605,6 +8603,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nanoid@npm:^3.3.12":
+  version: 3.3.15
+  resolution: "nanoid@npm:3.3.15"
+  bin:
+    nanoid: bin/nanoid.cjs
+  checksum: 10c0/e0b12e3a1d361f74150fa4b25631d0ae29f7162dab01a12f0f1be1f53b7a2a219f9b729504e474d4821207d0fe349bd3c97569ab5cf7ec2fff6aa94711956c93
+  languageName: node
+  linkType: hard
+
 "napi-postinstall@npm:^0.3.0":
   version: 0.3.4
   resolution: "napi-postinstall@npm:0.3.4"
@@ -8614,15 +8621,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nativewind@npm:^5.0.0-preview.3":
-  version: 5.0.0-preview.3
-  resolution: "nativewind@npm:5.0.0-preview.3"
+"nativewind@npm:^5.0.0-preview.4":
+  version: 5.0.0-preview.4
+  resolution: "nativewind@npm:5.0.0-preview.4"
   dependencies:
     tailwindcss-safe-area: "npm:^1.1.0"
   peerDependencies:
     react-native-css: ^3.0.1
     tailwindcss: ">4.1.11"
-  checksum: 10c0/f7c091e515d79fab400296c4cad94acc16429f070c52788ff3be070f11057117054431928f69de7926881a1eaf47afb966645939b216a0ac7adb35bead989dec
+  checksum: 10c0/56f82fdaad35583ebf08d9df96e80a0e2b236c5fa60ade124a8de767bed4345b306e1ee3bcb9d056a8c6a89267cb8a2f226ae4c3b4308a2a02a630cc779fa58f
   languageName: node
   linkType: hard
 
@@ -9150,7 +9157,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.5.6, postcss@npm:^8.5.9":
+"postcss@npm:^8.5.16":
+  version: 8.5.16
+  resolution: "postcss@npm:8.5.16"
+  dependencies:
+    nanoid: "npm:^3.3.12"
+    picocolors: "npm:^1.1.1"
+    source-map-js: "npm:^1.2.1"
+  checksum: 10c0/625de7a02f662f3a340964d14b487bd5097adf16f5f171e257d19005ba37aea8768ee446557500e88e91ca46b4d14d6cb4a0bf033c6ec0c8c0b660d85719f1ef
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.5.6":
   version: 8.5.9
   resolution: "postcss@npm:8.5.9"
   dependencies:
@@ -9256,11 +9274,11 @@ __metadata:
   linkType: hard
 
 "prettier@npm:^3.8.3":
-  version: 3.8.3
-  resolution: "prettier@npm:3.8.3"
+  version: 3.9.3
+  resolution: "prettier@npm:3.9.3"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10c0/754816fd7593eb80f6376d7476d463e832c38a12f32775a82683adb6e35b772b1f484d65f19401507b983a8c8a7cd5a4a9f12006bd56491e8f35503473f77473
+  checksum: 10c0/56623a03f0a1a791413b76458dbcab1dff8e5a7d02744be98ccc589a3a8cf8371dda8fba68f2d2336ded8475ed40f6eaf66f0f4d39df33235656018f64d2fdac
   languageName: node
   linkType: hard
 
@@ -9387,14 +9405,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:19.2.0":
-  version: 19.2.0
-  resolution: "react-dom@npm:19.2.0"
+"react-dom@npm:19.2.7":
+  version: 19.2.7
+  resolution: "react-dom@npm:19.2.7"
   dependencies:
     scheduler: "npm:^0.27.0"
   peerDependencies:
-    react: ^19.2.0
-  checksum: 10c0/fa2cae05248d01288e91523b590ce4e7635b1e13f1344e225f850d722a8da037bf0782f63b1c1d46353334e0c696909b82e582f8cad607948fde6f7646cc18d9
+    react: ^19.2.7
+  checksum: 10c0/970ff600f6e80d47d39e2f226f12f226173b3cba3382efc97c5f0cd663de9af38c7a4c11c213fb936094faeac83060d660247accaa96b752180d5b951b9cfecb
   languageName: node
   linkType: hard
 
@@ -9414,15 +9432,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-i18next@npm:^17.0.4":
-  version: 17.0.4
-  resolution: "react-i18next@npm:17.0.4"
+"react-i18next@npm:^17.0.8":
+  version: 17.0.8
+  resolution: "react-i18next@npm:17.0.8"
   dependencies:
     "@babel/runtime": "npm:^7.29.2"
     html-parse-stringify: "npm:^3.0.1"
     use-sync-external-store: "npm:^1.6.0"
   peerDependencies:
-    i18next: ">= 26.0.1"
+    i18next: ">= 26.2.0"
     react: ">= 16.8.0"
     typescript: ^5 || ^6
   peerDependenciesMeta:
@@ -9432,7 +9450,7 @@ __metadata:
       optional: true
     typescript:
       optional: true
-  checksum: 10c0/bfee7ff0194c218fd77f1bacfe83770ad7ab607c8b420b5ce7bac219afb898fe8befc2dcc42313886950914e2734d3921e4b465466eb3ecc967da4e3acbcf9ea
+  checksum: 10c0/4d13d396208927ed3c80eb62db011a98dae16d93fc951bb4cb220fc5a3a5dd2f0046244fdbd197f627f595230d6fa05cc5d1c6f52b6241acd63ff818dff63acb
   languageName: node
   linkType: hard
 
@@ -9743,10 +9761,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:19.2.0":
-  version: 19.2.0
-  resolution: "react@npm:19.2.0"
-  checksum: 10c0/1b6d64eacb9324725bfe1e7860cb7a6b8a34bc89a482920765ebff5c10578eb487e6b46b2f0df263bd27a25edbdae2c45e5ea5d81ae61404301c1a7192c38330
+"react@npm:19.2.7":
+  version: 19.2.7
+  resolution: "react@npm:19.2.7"
+  checksum: 10c0/0bd0e2f1bbd4ba97561c6597bf8a5fec05e6476fe61e165c1065598d16668efc6715205599c94d3ddd49d36cb0f21cbf1b9bcc18ee840b805ce222c3e8d558ac
   languageName: node
   linkType: hard
 
@@ -10661,10 +10679,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:4.2.2, tailwindcss@npm:^4.2.2":
+"tailwindcss@npm:4.2.2":
   version: 4.2.2
   resolution: "tailwindcss@npm:4.2.2"
   checksum: 10c0/6eae8a125c35d504ba6c518d26ec64fba694ff4a9ab9b9cd9883050128e0b7afdf491388c472d9bed2624664c1c7d4a133d19b653151a6b52e6ce6953168a857
+  languageName: node
+  linkType: hard
+
+"tailwindcss@npm:^4.3.2":
+  version: 4.3.2
+  resolution: "tailwindcss@npm:4.3.2"
+  checksum: 10c0/5a377846f77590812df234446175c4c2a45111a9626fd135e46f4552a33faee0d10c4e51aa5bbec955583265d48b380fb66c96f5da2775c961d4c26157617d19
   languageName: node
   linkType: hard
 
@@ -10693,9 +10718,9 @@ __metadata:
   resolution: "template-expo-app@workspace:."
   dependencies:
     "@bob-park/eslint-config-bobpark": "npm:^0.2.4-RC1-20251111"
-    "@bob-park/prettier-config-bobpark": "npm:^0.3.2-RC2-20250912"
+    "@bob-park/prettier-config-bobpark": "npm:^0.3.2-RC2-20260605"
     "@expo/vector-icons": "npm:^15.1.1"
-    "@lottiefiles/dotlottie-react": "npm:^0.18.10"
+    "@lottiefiles/dotlottie-react": "npm:^0.19.5"
     "@react-native-async-storage/async-storage": "npm:^2.2.0"
     "@react-navigation/bottom-tabs": "npm:^7.15.5"
     "@react-navigation/elements": "npm:^2.9.10"
@@ -10706,7 +10731,7 @@ __metadata:
     "@types/lodash": "npm:^4"
     "@types/react": "npm:~19.2.2"
     classnames: "npm:^2.5.1"
-    dayjs: "npm:^1.11.20"
+    dayjs: "npm:^1.11.21"
     expo: "npm:~55.0.14"
     expo-audio: "npm:~55.0.13"
     expo-auth-session: "npm:~55.0.13"
@@ -10734,16 +10759,16 @@ __metadata:
     expo-symbols: "npm:~55.0.7"
     expo-system-ui: "npm:~55.0.15"
     expo-web-browser: "npm:~55.0.14"
-    i18next: "npm:^26.0.5"
+    i18next: "npm:^26.3.3"
     immer: "npm:^11.1.8"
-    ky: "npm:^2.0.0"
+    ky: "npm:^2.0.2"
     lodash: "npm:^4.18.1"
-    lottie-react-native: "npm:^7.3.6"
-    nativewind: "npm:^5.0.0-preview.3"
-    postcss: "npm:^8.5.9"
-    react: "npm:19.2.0"
-    react-dom: "npm:19.2.0"
-    react-i18next: "npm:^17.0.4"
+    lottie-react-native: "npm:^7.3.8"
+    nativewind: "npm:^5.0.0-preview.4"
+    postcss: "npm:^8.5.16"
+    react: "npm:19.2.7"
+    react-dom: "npm:19.2.7"
+    react-i18next: "npm:^17.0.8"
     react-native: "npm:0.83.4"
     react-native-css: "npm:^3.0.7"
     react-native-gesture-handler: "npm:~2.30.0"
@@ -10757,9 +10782,9 @@ __metadata:
     react-native-uuid: "npm:^2.0.4"
     react-native-web: "npm:~0.21.0"
     react-native-worklets: "npm:0.8.1"
-    tailwindcss: "npm:^4.2.2"
-    typescript: "npm:~5.9.2"
-    zustand: "npm:^5.0.13"
+    tailwindcss: "npm:^4.3.2"
+    typescript: "npm:~5.9.3"
+    zustand: "npm:^5.0.14"
   languageName: unknown
   linkType: soft
 
@@ -10963,7 +10988,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:~5.9.2":
+"typescript@npm:~5.9.3":
   version: 5.9.3
   resolution: "typescript@npm:5.9.3"
   bin:
@@ -10973,7 +10998,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A~5.9.2#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A~5.9.3#optional!builtin<compat/typescript>":
   version: 5.9.3
   resolution: "typescript@patch:typescript@npm%3A5.9.3#optional!builtin<compat/typescript>::version=5.9.3&hash=5786d5"
   bin:
@@ -11564,9 +11589,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"zustand@npm:^5.0.13":
-  version: 5.0.13
-  resolution: "zustand@npm:5.0.13"
+"zustand@npm:^5.0.14":
+  version: 5.0.14
+  resolution: "zustand@npm:5.0.14"
   peerDependencies:
     "@types/react": ">=18.0.0"
     immer: ">=9.0.6"
@@ -11581,6 +11606,6 @@ __metadata:
       optional: true
     use-sync-external-store:
       optional: true
-  checksum: 10c0/e4e76af1c324c797e3cc6ef094cb15c5884ca6713697140c2be292b2c612f5445fa21d222671b97797a4376154cac14a140f05728f0ac17b4b9e10f45e0ff29e
+  checksum: 10c0/89de0c8119f1e0861b2f896a0b4df0d67994a373ecee02628d4e7b97cee1885207f646917d3ede395c3a5083316d48846855cfbc84aced7cd23a6db3238930a8
   languageName: node
   linkType: hard

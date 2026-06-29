@@ -39,7 +39,7 @@ src/
 │   ├── i18n/                    # i18next setup + locales (ko, en)
 │   ├── store/                   # Zustand root store + type helpers
 │   │   ├── rootStore.ts             # useStore (devtools + persist + immer)
-│   │   └── types.d.ts               # SlicePattern<T,S> declare module 'zustand'
+│   │   └── index.ts               # SlicePattern<T,S> declare module 'zustand'
 │   └── queries/                 # shared query type defs
 └── utils/               # pure utilities (no React/Expo deps)
 ```

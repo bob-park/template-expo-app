@@ -18,7 +18,7 @@ related:
   - `src/domain/<name>/store/<name>.state.ts` — slice 의 state + action 타입.
   - `src/domain/<name>/store/slice.ts` — `createXxxSlice` (default export).
   - `src/shared/store/rootStore.ts` — `useStore` (devtools + persist + immer).
-  - `src/shared/store/types.d.ts` — `SlicePattern<T,S>` 헬퍼 (immer + devtools middleware baked-in).
+  - `src/shared/store/index.ts` — `SlicePattern<T,S>` 헬퍼 (immer + devtools middleware baked-in).
 - State 타입은 파일 맨 아래 `export type { ... }` 로 노출한다.
 - Slice 함수 시그니처는 `SlicePattern<TSlice, BoundState>`. middleware 타입을 매번 다시 쓰지 않도록 헬퍼를 사용한다.
 - 모든 `set` 호출은 devtools action name 을 명시한다: `set(updater, false, { type: '<domain>/<action>' })`. 예: `user/loggedIn`, `user/loggedOut`. action 이름은 도메인 prefix + camelCase 동작명.

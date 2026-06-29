@@ -1,7 +1,7 @@
 {
   "name": "template-expo-app",
   "main": "expo-router/entry",
-  "version": "0.0.1",
+  "version": "0.0.0-rc1-20260630",
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^15.1.1",
-    "@lottiefiles/dotlottie-react": "^0.18.10",
+    "@lottiefiles/dotlottie-react": "^0.19.5",
     "@react-native-async-storage/async-storage": "^2.2.0",
     "@react-navigation/bottom-tabs": "^7.15.5",
     "@react-navigation/elements": "^2.9.10",
@@ -21,7 +21,7 @@
     "@shopify/flash-list": "^2.3.1",
     "@tanstack/react-query": "^5.99.0",
     "classnames": "^2.5.1",
-    "dayjs": "^1.11.20",
+    "dayjs": "^1.11.21",
     "expo": "~55.0.14",
     "expo-audio": "~55.0.13",
     "expo-auth-session": "~55.0.13",
@@ -49,15 +49,15 @@
     "expo-symbols": "~55.0.7",
     "expo-system-ui": "~55.0.15",
     "expo-web-browser": "~55.0.14",
-    "i18next": "^26.0.5",
+    "i18next": "^26.3.3",
     "immer": "^11.1.8",
-    "ky": "^2.0.0",
+    "ky": "^2.0.2",
     "lodash": "^4.18.1",
-    "lottie-react-native": "^7.3.6",
-    "nativewind": "^5.0.0-preview.3",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
-    "react-i18next": "^17.0.4",
+    "lottie-react-native": "^7.3.8",
+    "nativewind": "^5.0.0-preview.4",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "react-i18next": "^17.0.8",
     "react-native": "0.83.4",
     "react-native-css": "^3.0.7",
     "react-native-gesture-handler": "~2.30.0",
@@ -70,18 +70,18 @@
     "react-native-uuid": "^2.0.4",
     "react-native-web": "~0.21.0",
     "react-native-worklets": "0.8.1",
-    "zustand": "^5.0.13"
+    "zustand": "^5.0.14"
   },
   "devDependencies": {
     "@bob-park/eslint-config-bobpark": "^0.2.4-RC1-20251111",
-    "@bob-park/prettier-config-bobpark": "^0.3.2-RC2-20250912",
+    "@bob-park/prettier-config-bobpark": "^0.3.2-RC2-20260605",
     "@tailwindcss/postcss": "^4.2.2",
     "@types/lodash": "^4",
     "@types/react": "~19.2.2",
-    "postcss": "^8.5.9",
+    "postcss": "^8.5.16",
     "react-native-react-query-devtools": "^1.5.1",
-    "tailwindcss": "^4.2.2",
-    "typescript": "~5.9.2"
+    "tailwindcss": "^4.3.2",
+    "typescript": "~5.9.3"
   },
   "resolutions": {
     "lightningcss": "1.30.1"
