@@ -5145,7 +5145,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^9.36.0, eslint@npm:^9.39.4":
+"eslint@npm:^9, eslint@npm:^9.36.0":
   version: 9.39.4
   resolution: "eslint@npm:9.39.4"
   dependencies:
@@ -9685,7 +9685,7 @@ __metadata:
     "@types/react": "npm:~19.2.2"
     classnames: "npm:^2.5.1"
     dayjs: "npm:^1.11.21"
-    eslint: "npm:^9.39.4"
+    eslint: "npm:^9"
     expo: "npm:^56.0.0"
     expo-asset: "npm:~56.0.17"
     expo-audio: "npm:~56.0.12"
