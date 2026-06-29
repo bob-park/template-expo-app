@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import { Text, TouchableOpacity, View } from 'react-native';
 
-import { ThemeContext } from '@/shared/providers/theme/ThemeProvider';
+import { ThemeContext, ThemePreference } from '@/shared/providers/theme/ThemeProvider';
 
 import cx from 'classnames';
 
