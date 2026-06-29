@@ -176,6 +176,81 @@ src/
 | `@/*`        | `src/*`    |
 | `@/assets/*` | `assets/*` |
 
+## tanstack-query error handling
+
+`tanstack-query` 사용 시 error handling 을 추가한다.
+
+서버에서 내려주는 error 응답은 `ProblemDetail` 타입으로 정의한다.
+
+```typescript
+// src/shared/api/common.dto.ts
+
+// ...
+
+/**
+ * ProblemDetail
+ */
+type ProblemDetail = {
+  type: string;
+  title: string;
+  status: number;
+  detail: string;
+  code: string;
+  timestamp: Date;
+  exception: string;
+};
+
+// ...
+```
+
+`mutation` 작성 시 `onError` 에서 `err.data` 를 통해 `ProblemDetail` 을 전달한다.
+
+```typescript
+// tanstack-query 사용 시 (mutations)
+
+// ...
+
+export function useUserRegister({ onSuccess, onError }: QueryMutationHandle<User>) {
+  const queryClient = useQueryClient();
+
+  const { mutate, isPending } = useMutation({
+    mutationKey: ['users', 'register'],
+    mutationFn: (req: UserRegisterRequest) => register(req),
+    onSuccess: async (data) => {
+      onSuccess?.(data);
+
+      await queryClient.invalidateQueries({ queryKey: ['users'] });
+    },
+    onError: (err) => {
+      onError?.(err.data); // error handling
+    },
+  });
+
+  return { register: mutate, isLoading: isPending };
+}
+
+// ...
+```
+
+`hooks` 사용 시 `onError` 콜백에서 `code` 를 기준으로 분기 처리한다.
+
+```typescript
+// tanstack-query hooks 사용
+
+// ...
+
+const { register } = useUserRegister({
+  onSuccess: (data) => console.log(data),
+  onError: (err) => {
+    if (err.code === 'BAD_REQUEST') {
+      console.log('잘못된 요청');
+    }
+  },
+});
+
+// ...
+```
+
 ## 빌드 / 배포 (EAS)
 
 ```bash
