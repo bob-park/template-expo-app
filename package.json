@@ -71,8 +71,8 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
-    "@bob-park/eslint-config-bobpark": "^0.2.4-RC1-20251111",
-    "@bob-park/prettier-config-bobpark": "^0.3.2-RC2-20260605",
+    "@bob-park/eslint-config-bobpark": "^0.3.0-RC4-20260630",
+    "@bob-park/prettier-config-bobpark": "^0.4.0-RC1-20260630",
     "@tailwindcss/postcss": "^4.2.2",
     "@types/lodash": "^4",
     "@types/react": "~19.2.2",
