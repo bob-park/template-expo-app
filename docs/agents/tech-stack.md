@@ -27,3 +27,7 @@ related:
 - **Path alias:** `@/*` → `src/*`, `@/assets/*` → `assets/*`
 
 정확한 핀 버전은 `package.json` 을 참조한다.
+
+## Tooling
+
+Expo 관련 작업(네이티브 UI, expo-router, 데이터 패칭, SDK 업그레이드, 배포/CI 등)을 구현할 때는 `expo@expo-plugins` 플러그인의 스킬(`expo:building-native-ui`, `expo:upgrading-expo`, `expo:expo-deployment` 등)을 우선 활용한다. 플러그인 스킬은 Claude Code 환경에서 동작하며, 이를 지원하지 않는 agent 는 무시한다.

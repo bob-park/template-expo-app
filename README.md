@@ -97,6 +97,12 @@ yarn web
 | `yarn prettier`      | Prettier 포맷팅                                               |
 | `yarn reset-project` | 스타터 코드를 `app-example`로 이동하고 빈 `app` 디렉토리 생성 |
 
+## AI 코드 에이전트 (Claude Code)
+
+Expo 관련 작업(네이티브 UI, expo-router, 데이터 패칭, SDK 업그레이드, 배포/CI 등)을 구현할 때는 `expo@expo-plugins` 플러그인의 스킬(`expo:building-native-ui`, `expo:upgrading-expo`, `expo:expo-deployment` 등)을 우선 활용합니다. 이 플러그인 스킬은 Claude Code 환경에서 동작하며, 이를 지원하지 않는 도구는 해당 안내를 무시합니다.
+
+> agent 동작에 대한 상세 규칙은 `AGENTS.md` 및 `docs/agents/` 문서를 참조하세요.
+
 ## 디렉토리 구조
 
 ```
