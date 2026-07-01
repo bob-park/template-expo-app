@@ -164,8 +164,12 @@ export default function AuthProvider({ children }: Readonly<{ children: React.Re
       });
   };
 
-  const loadAuth = () => {
+  const loadAuth = async () => {
     console.log('loaded auth...');
+
+    if (userinfo && userProviderId) {
+      await deleteUserNotificationProvider({ userUniqueId: userinfo.sub, userProviderId });
+    }
 
     Promise.all([
       SecureStore.getItemAsync(KEY_EXPIRED_AT).then((data) => {
@@ -207,10 +211,6 @@ export default function AuthProvider({ children }: Readonly<{ children: React.Re
       setAccessToken(token.accessToken);
       setRefreshToken(token.refreshToken);
       setExpiredAt(dayjs.unix(unixtimestamp).toDate());
-
-      if (userinfo && userProviderId) {
-        await deleteUserNotificationProvider({ userUniqueId: userinfo.sub, userProviderId });
-      }
 
       queryClient.clear();
 
