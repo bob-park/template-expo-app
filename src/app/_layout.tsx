@@ -23,6 +23,7 @@ const RootStackLayout = () => {
 
   // hooks
   const { colorScheme } = useColorScheme();
+
   const isDark = colorScheme === 'dark';
 
   return (

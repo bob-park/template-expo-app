@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo } from 'react';
 
 import { Linking, Text, View } from 'react-native';
 import Toast, { ToastConfig } from 'react-native-toast-message';
@@ -7,10 +7,10 @@ import Constants from 'expo-constants';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import { usePathname, useRouter } from 'expo-router';
-import * as SecureStore from 'expo-secure-store';
 
 import { useUserNotification } from '@/domain/notifications/queries/userNotification';
 import { AuthContext } from '@/shared/providers/auth/AuthProvider';
+import { useStore } from '@/shared/store/rootStore';
 
 export interface NotificationMessage {
   id: string;
@@ -19,8 +19,6 @@ export interface NotificationMessage {
   read: boolean;
   createdDate: Date;
 }
-
-const KEY_USER_PROVIDER_ID = 'userProviderId';
 
 // custom toast
 const toastConfig: ToastConfig = {
@@ -65,8 +63,9 @@ export default function NotificationProvider({ children }: Readonly<{ children: 
   // context
   const { userinfo, isLoggedIn } = useContext(AuthContext);
 
-  // state
-  const [userProviderId, setUserProviderId] = useState<string>();
+  // store
+  const userProviderId = useStore((s) => s.userProviderId);
+  const setUserProviderId = useStore((s) => s.setUserProviderId);
 
   // hooks
   const router = useRouter();
@@ -84,16 +83,10 @@ export default function NotificationProvider({ children }: Readonly<{ children: 
 
   // useEffect
   useEffect(() => {
-    SecureStore.getItemAsync(KEY_USER_PROVIDER_ID).then((data) => {
-      if (!data) {
-        // init
-        handleInit();
-
-        return;
-      }
-
-      handleUpdateUserProviderId(data);
-    });
+    if (!useStore.getState().userProviderId) {
+      // init
+      handleInit();
+    }
 
     const receivedListener = Notifications.addNotificationReceivedListener((notification) => {
       showToast({
@@ -154,8 +147,6 @@ export default function NotificationProvider({ children }: Readonly<{ children: 
 
   const handleUpdateUserProviderId = (id: string) => {
     setUserProviderId(id);
-
-    SecureStore.setItemAsync(KEY_USER_PROVIDER_ID, id);
   };
 
   const showToast = ({
