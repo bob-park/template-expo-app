@@ -135,7 +135,11 @@ export default function AuthProvider({ children }: Readonly<{ children: React.Re
     };
   }, [expiredAt, refreshToken]);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    if (userinfo && userProviderId) {
+      await deleteUserNotificationProvider({ userUniqueId: userinfo.sub, userProviderId });
+    }
+
     Promise.all([
       SecureStore.deleteItemAsync(KEY_ACCESS_TOKEN),
       SecureStore.deleteItemAsync(KEY_REFRESH_TOKEN),
@@ -164,12 +168,8 @@ export default function AuthProvider({ children }: Readonly<{ children: React.Re
       });
   };
 
-  const loadAuth = async () => {
+  const loadAuth = () => {
     console.log('loaded auth...');
-
-    if (userinfo && userProviderId) {
-      await deleteUserNotificationProvider({ userUniqueId: userinfo.sub, userProviderId });
-    }
 
     Promise.all([
       SecureStore.getItemAsync(KEY_EXPIRED_AT).then((data) => {
