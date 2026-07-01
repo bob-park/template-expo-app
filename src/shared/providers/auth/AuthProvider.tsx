@@ -7,6 +7,7 @@ import * as WebBrowser from 'expo-web-browser';
 
 import { useQueryClient } from '@tanstack/react-query';
 
+import { deleteUserNotificationProvider } from '@/domain/notifications/apis/userNotification';
 import dayjs from '@/shared/dayjs';
 import { useStore } from '@/shared/store/rootStore';
 import delay from '@/utils/delay';
@@ -77,6 +78,8 @@ export default function AuthProvider({ children }: Readonly<{ children: React.Re
   const isLoggedIn = useStore((store) => store.isLoggedIn);
   const loggedIn = useStore((store) => store.loggedIn);
   const loggedOut = useStore((store) => store.loggedOut);
+
+  const userProviderId = useStore((store) => store.userProviderId);
 
   // queries
   const queryClient = useQueryClient();
@@ -204,6 +207,10 @@ export default function AuthProvider({ children }: Readonly<{ children: React.Re
       setAccessToken(token.accessToken);
       setRefreshToken(token.refreshToken);
       setExpiredAt(dayjs.unix(unixtimestamp).toDate());
+
+      if (userinfo && userProviderId) {
+        await deleteUserNotificationProvider({ userUniqueId: userinfo.sub, userProviderId });
+      }
 
       queryClient.clear();
 
