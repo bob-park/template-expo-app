@@ -15,7 +15,6 @@ import delay from '@/utils/delay';
 const KEY_ACCESS_TOKEN = 'accessToken';
 const KEY_REFRESH_TOKEN = 'refreshToken';
 const KEY_EXPIRED_AT = 'expiredAt';
-const KEY_USER_PROVIDER_ID = 'userProviderId';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -136,13 +135,6 @@ export default function AuthProvider({ children }: Readonly<{ children: React.Re
 
   const handleLogout = () => {
     Promise.all([
-      SecureStore.getItemAsync(KEY_USER_PROVIDER_ID).then(async (data) => {
-        if (data && userinfo) {
-          await deleteUserNotificationProvider({ userUniqueId: userinfo.sub, userProviderId: data });
-        }
-
-        SecureStore.deleteItemAsync(KEY_USER_PROVIDER_ID);
-      }),
       SecureStore.deleteItemAsync(KEY_ACCESS_TOKEN),
       SecureStore.deleteItemAsync(KEY_REFRESH_TOKEN),
       SecureStore.deleteItemAsync(KEY_EXPIRED_AT),
