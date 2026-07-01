@@ -7,7 +7,6 @@ import * as WebBrowser from 'expo-web-browser';
 
 import { useQueryClient } from '@tanstack/react-query';
 
-import { deleteUserNotificationProvider } from '@/domain/notifications/apis/userNotification';
 import dayjs from '@/shared/dayjs';
 import { useStore } from '@/shared/store/rootStore';
 import delay from '@/utils/delay';
