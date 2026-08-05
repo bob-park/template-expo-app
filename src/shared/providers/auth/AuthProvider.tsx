@@ -143,19 +143,6 @@ export default function AuthProvider({ children }: Readonly<{ children: React.Re
       await deleteUserNotificationProvider({ userUniqueId: userinfo.sub, userProviderId });
     }
 
-    Promise.all([
-      SecureStore.deleteItemAsync(KEY_ID_TOKEN),
-      SecureStore.deleteItemAsync(KEY_ACCESS_TOKEN),
-      SecureStore.deleteItemAsync(KEY_REFRESH_TOKEN),
-      SecureStore.deleteItemAsync(KEY_EXPIRED_AT),
-    ]).then(() => {
-      loggedOut();
-      setIdToken(undefined);
-      setAccessToken('');
-      setRefreshToken(undefined);
-      setExpiredAt(undefined);
-    });
-
     const redirectUri = makeRedirectUri({
       scheme: (scheme as string) || 'templateexpoapp',
       path: 'login',
@@ -163,7 +150,20 @@ export default function AuthProvider({ children }: Readonly<{ children: React.Re
 
     const endSessionUrl = `${END_SESSION_ENDPOINT}?id_token_hint=${idToken}&post_logout_redirect_uri=${redirectUri}`;
 
-    WebBrowser.openAuthSessionAsync(endSessionUrl, redirectUri);
+    await WebBrowser.openAuthSessionAsync(endSessionUrl, redirectUri).then(async () => {
+      await Promise.all([
+        SecureStore.deleteItemAsync(KEY_ID_TOKEN),
+        SecureStore.deleteItemAsync(KEY_ACCESS_TOKEN),
+        SecureStore.deleteItemAsync(KEY_REFRESH_TOKEN),
+        SecureStore.deleteItemAsync(KEY_EXPIRED_AT),
+      ]).then(() => {
+        loggedOut();
+        setIdToken(undefined);
+        setAccessToken('');
+        setRefreshToken(undefined);
+        setExpiredAt(undefined);
+      });
+    });
   };
 
   const handleRefreshAccessToken = (refreshToken: string) => {
