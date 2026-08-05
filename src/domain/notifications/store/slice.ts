@@ -5,8 +5,7 @@ import { SlicePattern } from 'zustand';
 import { NotificationState } from './notifications.state';
 
 const createNotificationSlice: SlicePattern<NotificationState, BoundState> = (set) => ({
-  setUserProviderId: (id) =>
-    set(() => ({ userProviderId: id }), false, { type: 'notifications/setUserProviderId' }),
+  setUserProviderId: (id) => set(() => ({ userProviderId: id }), false, { type: 'notifications/setUserProviderId' }),
 });
 
 export default createNotificationSlice;
