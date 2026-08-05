@@ -12,6 +12,7 @@ import dayjs from '@/shared/dayjs';
 import { useStore } from '@/shared/store/rootStore';
 import delay from '@/utils/delay';
 
+const KEY_ID_TOKEN = 'idToken';
 const KEY_ACCESS_TOKEN = 'accessToken';
 const KEY_REFRESH_TOKEN = 'refreshToken';
 const KEY_EXPIRED_AT = 'expiredAt';
@@ -36,6 +37,9 @@ export interface UserInfo {
 }
 
 const { host, clientId, clientSecret } = Constants.expoConfig?.extra?.auth ?? {};
+const scheme = Constants.expoConfig?.scheme;
+
+const END_SESSION_ENDPOINT = `${host}/connect/logout`;
 
 export const discovery = {
   authorizationEndpoint: `${host}/oauth2/authorize`,
@@ -45,7 +49,7 @@ export const discovery = {
 };
 
 export const redirectUri = makeRedirectUri({
-  scheme: 'templateexpoapp',
+  scheme: (scheme as string) || 'templateexpoapp',
   path: 'callback',
 });
 
@@ -67,11 +71,10 @@ export const AuthContext = createContext<AuthContextProps>({
 
 export default function AuthProvider({ children }: Readonly<{ children: React.ReactNode }>) {
   // state
-  // const [userinfo, setUserInfo] = useState<UserInfo>();
   const [expiredAt, setExpiredAt] = useState<Date>();
+  const [idToken, setIdToken] = useState<string>();
   const [accessToken, setAccessToken] = useState<string>('');
   const [refreshToken, setRefreshToken] = useState<string>();
-  // const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   // store
   const userinfo = useStore((store) => store.userinfo);
@@ -141,15 +144,26 @@ export default function AuthProvider({ children }: Readonly<{ children: React.Re
     }
 
     Promise.all([
+      SecureStore.deleteItemAsync(KEY_ID_TOKEN),
       SecureStore.deleteItemAsync(KEY_ACCESS_TOKEN),
       SecureStore.deleteItemAsync(KEY_REFRESH_TOKEN),
       SecureStore.deleteItemAsync(KEY_EXPIRED_AT),
     ]).then(() => {
       loggedOut();
+      setIdToken(undefined);
       setAccessToken('');
       setRefreshToken(undefined);
       setExpiredAt(undefined);
     });
+
+    const redirectUri = makeRedirectUri({
+      scheme: (scheme as string) || 'templateexpoapp',
+      path: 'login',
+    });
+
+    const endSessionUrl = `${END_SESSION_ENDPOINT}?id_token_hint=${idToken}&post_logout_redirect_uri=${redirectUri}`;
+
+    WebBrowser.openAuthSessionAsync(endSessionUrl, redirectUri);
   };
 
   const handleRefreshAccessToken = (refreshToken: string) => {
@@ -179,6 +193,13 @@ export default function AuthProvider({ children }: Readonly<{ children: React.Re
 
         return dayjs(data).toDate();
       }),
+      SecureStore.getItemAsync(KEY_ID_TOKEN).then((data) => {
+        if (!data) {
+          return;
+        }
+
+        return data;
+      }),
       SecureStore.getItemAsync(KEY_ACCESS_TOKEN).then((data) => {
         if (!data) {
           return;
@@ -193,8 +214,9 @@ export default function AuthProvider({ children }: Readonly<{ children: React.Re
 
         return data;
       }),
-    ]).then(([expiredAt, accessToken, refreshToken]) => {
+    ]).then(([expiredAt, idToken, accessToken, refreshToken]) => {
       setExpiredAt(expiredAt);
+      setIdToken(idToken);
       setAccessToken(accessToken || '');
       setRefreshToken(refreshToken);
     });
@@ -204,10 +226,12 @@ export default function AuthProvider({ children }: Readonly<{ children: React.Re
     const unixtimestamp = (token.expiresIn || 0) + token.issuedAt;
 
     Promise.all([
+      SecureStore.setItemAsync(KEY_ID_TOKEN, token.idToken || ''),
       SecureStore.setItemAsync(KEY_ACCESS_TOKEN, token.accessToken),
       SecureStore.setItemAsync(KEY_REFRESH_TOKEN, token.refreshToken || ''),
       SecureStore.setItemAsync(KEY_EXPIRED_AT, dayjs.unix(unixtimestamp).toISOString()),
     ]).then(async () => {
+      setIdToken(token.idToken);
       setAccessToken(token.accessToken);
       setRefreshToken(token.refreshToken);
       setExpiredAt(dayjs.unix(unixtimestamp).toDate());

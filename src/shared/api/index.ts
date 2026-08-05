@@ -35,7 +35,7 @@ export function toSearchParams(req: Record<string, unknown>) {
   return searchParams;
 }
 
-export function getNextPageParams<T>(lastPage: PagedModel<T>, sort?: string) {
+export function getNextPageParams<T>(lastPage: PagedModel<T>, sort?: string[]) {
   const { totalPages, number, size } = lastPage.page;
 
   const nextPage = number + 1;

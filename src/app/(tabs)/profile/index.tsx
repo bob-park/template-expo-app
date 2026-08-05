@@ -1,7 +1,8 @@
-import { useContext } from 'react';
+import { use, useContext } from 'react';
 
 import { Text, TouchableOpacity, View } from 'react-native';
 
+import { AuthContext } from '@/shared/providers/auth/AuthProvider';
 import { ThemeContext, ThemePreference } from '@/shared/providers/theme/ThemeProvider';
 
 import cx from 'classnames';
@@ -23,10 +24,11 @@ const THEME_OPTIONS: { key: string; label: string }[] = [
 
 export default function Info() {
   // context
-  const { theme, onUpdateTheme } = useContext(ThemeContext);
+  const { theme, onUpdateTheme } = use(ThemeContext);
+  const { onLogout } = use(AuthContext);
 
   return (
-    <View className="flex size-full items-center justify-center dark:bg-black">
+    <View className="flex size-full items-center justify-center gap-10 dark:bg-black">
       <Text>My Info</Text>
 
       <View className="w-full flex-col">
@@ -63,6 +65,12 @@ export default function Info() {
             {index < THEME_OPTIONS.length - 1 && <View className="ml-[60px]" />}
           </View>
         ))}
+      </View>
+
+      <View className="w-full flex-col">
+        <TouchableOpacity className="flex flex-row items-center gap-3 px-4 py-4" onPress={onLogout}>
+          <Text>로그아웃</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
