@@ -4,7 +4,7 @@ Expo (React Native) 기반 앱 템플릿 프로젝트입니다. OAuth2 인증, �
 
 ## 기술 스택
 
-- **Framework**: [Expo](https://expo.dev) SDK 56, React Native 0.85, React 19.2
+- **Framework**: [Expo](https://expo.dev) SDK 58 (beta), React Native 0.88 (RC), React 19.3
 - **Routing**: [expo-router](https://docs.expo.dev/router/introduction) ~56 (file-based, typed routes)
 - **Styling**: [NativeWind](https://www.nativewind.dev) v5 (Tailwind CSS v4)
 - **Server State**: [@tanstack/react-query](https://tanstack.com/query) v5
