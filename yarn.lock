@@ -4296,10 +4296,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"colorjs.io@npm:0.6.0-alpha.1":
-  version: 0.6.0-alpha.1
-  resolution: "colorjs.io@npm:0.6.0-alpha.1"
-  checksum: 10c0/0bc58a65927d77fceade43fcdcaa512befadaa5fb38a4afb3ab632b38eea5d42d656c2bb32c3c604010eeb6e210f3801b0dc480d6b3ae26de6da8c3c55e09f11
+"colorjs.io@npm:0.7.0":
+  version: 0.7.0
+  resolution: "colorjs.io@npm:0.7.0"
+  checksum: 10c0/528e52e25e8147c43138b4d6bda8c264325bbe38f5db0eacc915988f34c4bbb811e36805952eb5591d451babf206be7420f288859293e4167ce9f36ba301fe33
   languageName: node
   linkType: hard
 
@@ -8544,13 +8544,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-css@npm:^3.0.7":
-  version: 3.0.7
-  resolution: "react-native-css@npm:3.0.7"
+"react-native-css@npm:3.1.0-rc.0":
+  version: 3.1.0-rc.0
+  resolution: "react-native-css@npm:3.1.0-rc.0"
   dependencies:
     "@types/debug": "npm:^4.1.12"
     babel-plugin-react-compiler: "npm:^19.1.0-rc.2"
-    colorjs.io: "npm:0.6.0-alpha.1"
+    colorjs.io: "npm:0.7.0"
     comment-json: "npm:^4.2.5"
     debug: "npm:^4.4.1"
   peerDependencies:
@@ -8558,7 +8558,7 @@ __metadata:
     lightningcss: ">=1.27.0"
     react: ">=19"
     react-native: ">=0.81"
-  checksum: 10c0/6dc83a65e9e26ace24d8c2ae82e8d75504b261069f0372d7a82be5d389561f04e8defbb92a1ad6876113d3565c19b2e22b4fe159a8c76557fec5900045d75a0d
+  checksum: 10c0/2170c000c5fc5e7a885a19f870f333337753ab586f19903a3dfd9eed4e60f97f03498fb4be06bdccd7858740936328460796fbff5d0dda3066b323a4ceb7a966
   languageName: node
   linkType: hard
 
@@ -9730,7 +9730,7 @@ __metadata:
     react-dom: "npm:19.3.0"
     react-i18next: "npm:^17.0.8"
     react-native: "npm:0.88.0-rc.3"
-    react-native-css: "npm:^3.0.7"
+    react-native-css: "npm:3.1.0-rc.0"
     react-native-gesture-handler: "npm:~3.2.1"
     react-native-pager-view: "npm:9.0.4"
     react-native-react-query-devtools: "npm:^1.5.1"

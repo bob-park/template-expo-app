@@ -57,7 +57,7 @@
     "react-dom": "19.3.0",
     "react-i18next": "^17.0.8",
     "react-native": "0.88.0-rc.3",
-    "react-native-css": "^3.0.7",
+    "react-native-css": "3.1.0-rc.0",
     "react-native-gesture-handler": "~3.2.1",
     "react-native-pager-view": "9.0.4",
     "react-native-reanimated": "4.7.0",
