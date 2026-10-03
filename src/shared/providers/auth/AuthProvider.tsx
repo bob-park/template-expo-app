@@ -150,7 +150,9 @@ export default function AuthProvider({ children }: Readonly<{ children: React.Re
 
     const endSessionUrl = `${END_SESSION_ENDPOINT}?id_token_hint=${idToken}&post_logout_redirect_uri=${redirectUri}`;
 
-    await WebBrowser.openAuthSessionAsync(endSessionUrl, redirectUri).then(async () => {
+    await WebBrowser.openAuthSessionAsync(endSessionUrl, redirectUri, {
+      preferEphemeralSession: true,
+    }).then(async () => {
       await Promise.all([
         SecureStore.deleteItemAsync(KEY_ID_TOKEN),
         SecureStore.deleteItemAsync(KEY_ACCESS_TOKEN),
