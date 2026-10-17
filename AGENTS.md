@@ -16,6 +16,7 @@ User instructions > `CLAUDE.md` (Claude Code overlay) > `AGENTS.md`.
 
 ## Design & UI
 
+- 디자인 또는 UI 작업 시 항상 `./docs/design/` 의 디자인 문서를 먼저 참고한다.
 - 디자인 또는 UI 작업 시 항상 superpowers 의 Visual Companion 으로 목업 디자인을 **최소 3개 이상** 보여준다.
 - UI 목업 디자인 작성 시 항상 `ui-ux-pro-max` 스킬을 사용한다.
 - 이 규칙은 [Design Prompt Workflow](docs/agents/workflows/design-workflow.md) 의 2~3단계(Visual Companion "제안", 사용자 동의 후 목업)보다 우선한다.
