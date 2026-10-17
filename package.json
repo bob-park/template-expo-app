@@ -80,7 +80,7 @@
     "postcss": "^8.5.16",
     "react-native-react-query-devtools": "^1.5.1",
     "tailwindcss": "^4.3.2",
-    "typescript": "~6.0.3"
+    "typescript": "^6"
   },
   "resolutions": {
     "lightningcss": "1.30.1"
