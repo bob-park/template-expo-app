@@ -20,8 +20,8 @@ Expo (React Native) 기반 앱 템플릿 프로젝트입니다. OAuth2 인증, �
 
 ## 요구 사항
 
-- Node.js — mise 로 버전 고정 (`.mise.toml`)
-- Yarn 4 — [mise](https://mise.jdx.dev/) 로 버전 고정 (`.mise.toml`)
+- Node.js — mise 로 버전 고정 (`mise.toml`)
+- Yarn 4 — [mise](https://mise.jdx.dev/) 로 버전 고정 (`mise.toml`)
 - iOS 빌드: macOS + Xcode + CocoaPods
 - Android 빌드: Android Studio + JDK 17
 - (선택) [EAS CLI](https://docs.expo.dev/eas/) — 클라우드 빌드/배포 시 필요

@@ -23,7 +23,7 @@ related:
 - **Animation:** `lottie-react-native` v7, `@lottiefiles/dotlottie-react`, `react-native-reanimated` v4 (`react-native-worklets`)
 - **Date:** `dayjs` (ko locale + duration/relativeTime plugins)
 - **Client global state:** `zustand` v5 (slice 패턴, `immer` middleware)
-- **Package manager / runtime:** Yarn 4 (Berry), Node — 둘 다 버전은 `.mise.toml` 로 mise 가 고정
+- **Package manager / runtime:** Yarn 4 (Berry), Node — 둘 다 버전은 `../../mise.toml` 로 mise 가 고정
 - **Path alias:** `@/*` → `src/*`, `@/assets/*` → `assets/*`
 
 정확한 핀 버전은 `package.json` 을 참조한다.
