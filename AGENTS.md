@@ -21,6 +21,15 @@ User instructions > `CLAUDE.md` (Claude Code overlay) > `AGENTS.md`.
 - UI 목업 디자인 작성 시 항상 `ui-ux-pro-max` 스킬을 사용한다.
 - 이 규칙은 [Design Prompt Workflow](docs/agents/workflows/design-workflow.md) 의 2~3단계(Visual Companion "제안", 사용자 동의 후 목업)보다 우선한다.
 
+## Before finishing a branch
+
+`superpowers` 워크플로우에서 모든 task 와 브랜치 전체 코드 리뷰가 끝난 뒤, `finishing-a-development-branch` **이전에** 다음을 수행한다:
+
+1. 이 브랜치가 변경한 UI 파일을 나열한다: `git diff <base>...HEAD --name-only` (`<base>` 는 `feature/*` 면 `develop`, `hotfix/*` 면 `main`). UI 파일은 `src/**/*.{tsx,css}` 와 `src/shared/i18n/locales/{en,ko}.json` 이다.
+2. UI 파일이 하나라도 변경됐으면 `jakubkrehel/skills` 의 `better-interface` 스킬을 실행한다(다른 `better-*` 스킬을 하나의 ranked report 로 묶어준다). 범위는 이 브랜치가 변경한 화면/컴포넌트로 한정하고, 건드리지 않은 화면은 리뷰하지 않는다. 스킬이 설치되어 있지 않으면 단계를 건너뛰지 말고 멈춰서 사용자에게 알린다.
+3. `HIGH` finding 은 Critical/Important 코드 리뷰 finding 처럼 취급한다: 수정한 뒤 [Quality Gates](docs/agents/workflows/dev-env.md)(`yarn lint`, `yarn prettier`, 시뮬레이터 확인)를 다시 돌리고 light/dark, ko/en 을 재확인한다. 나머지는 목록으로 보고만 하고 수정하지 않는다.
+4. 계획에 없는 디자인 변경은 먼저 묻지 않고 하지 않는다. UI 의 모습(토큰, 색상, 레이아웃, 문구)을 바꾸는 `HIGH` 수정도 포함된다.
+
 ## Map
 
 ### Foundations

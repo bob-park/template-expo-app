@@ -42,7 +42,7 @@
 
 - `git push --force` 금지.
 - `git reset --hard`, `git branch -D` 등 파괴적 git 명령 금지.
-- `master` / `develop` 브랜치로 직접 push 금지 — 반드시 PR 경유.
+- `main` / `develop` 브랜치로 직접 push 금지 — 반드시 PR 경유.
 - secret-bearing 파일 변경/커밋 금지: `.env`, `.env.local`,
   `google-services.json`, `GoogleService-Info.plist`.
 - 사용자에게 검토 기회 없이 마이그레이션 스크립트 실행 금지.

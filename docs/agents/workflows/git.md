@@ -8,23 +8,23 @@ related:
 
 # Git Workflow (Branch / Commit / PR)
 
-> `master`/`develop`/`feature/*`/`hotfix/*` 4-branch. feature PR base 는 반드시 `develop`(master 직접 금지). 커밋 prefix = `feat/refactor/fix/build/docs/test`. PR 제목의 `[major]`/`[minor]` 토큰이 version bump 결정.
+> `main`/`develop`/`feature/*`/`hotfix/*` 4-branch. feature PR base 는 반드시 `develop`(main 직접 금지). 커밋 prefix = `feat/refactor/fix/build/docs/test`. PR 제목의 `[major]`/`[minor]` 토큰이 version bump 결정.
 
 ## Branch naming
 
-- `master` — production-ready. Releases cut from here. 매 release 마다 git tag (`vX.Y.Z`) 와 GitHub release 를 만든다.
+- `main` — production-ready. Releases cut from here. 매 release 마다 git tag (`vX.Y.Z`) 와 GitHub release 를 만든다.
 - `develop` — integration branch for the next release.
 - `feature/<topic>` — new feature work; `develop` 에서 분기, PR 로 `develop` 에 merge.
-- `hotfix/<topic>` — released version 의 urgent fix; `master` 에서 분기, `master` 와 `develop` 양쪽에 merge.
+- `hotfix/<topic>` — released version 의 urgent fix; `main` 에서 분기, `main` 와 `develop` 양쪽에 merge.
 
-`master` / `develop` 직접 push 금지 — 항상 PR 경유.
+`main` / `develop` 직접 push 금지 — 항상 PR 경유.
 
 ### Rules
 
 - `<topic>` 는 lowercase, kebab-case (예: `feature/asset-upload`, `hotfix/jwt-scope-mapping`).
-- `feature/*` 브랜치에서 PR 을 열 때 base 는 **반드시 `develop`**. master 직접 타겟 금지; master 승격은 별도 `develop` → `master` release PR 로 한다.
-- `master` / `develop` 직접 커밋 금지 — 항상 PR.
-- release 시 `master` 에 tag 생성; tag 이름은 아래 버전 패턴을 따른다.
+- `feature/*` 브랜치에서 PR 을 열 때 base 는 **반드시 `develop`**. main 직접 타겟 금지; main 승격은 별도 `develop` → `main` release PR 로 한다.
+- `main` / `develop` 직접 커밋 금지 — 항상 PR.
+- release 시 `main` 에 tag 생성; tag 이름은 아래 버전 패턴을 따른다.
 
 ## Commit message
 
@@ -60,6 +60,6 @@ GitHub Actions 가 PR merge 시 버전을 auto-bump 한다. 버전 패턴: `[maj
 
 PR rules:
 
-- Target branch: 보통 `develop` (hotfix 는 `master`).
+- Target branch: 보통 `develop` (hotfix 는 `main`).
 - 제목은 release-note 한 줄로 읽히게 작성한다.
 - 본문은 diff 가 무엇인지가 아니라 **왜** 변경하는지를 설명한다.
