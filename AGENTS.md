@@ -11,7 +11,7 @@ User instructions > `CLAUDE.md` (Claude Code overlay) > `AGENTS.md`.
 
 ## Tooling
 
-- Expo 관련 작업(네이티브 UI, expo-router, 데이터 패칭, SDK 업그레이드, 배포/CI 등)을 구현할 때는 `expo@expo-plugins` 플러그인의 스킬(`expo:building-native-ui`, `expo:upgrading-expo`, `expo:expo-deployment` 등)을 우선 활용한다.
+- Expo 관련 작업(네이티브 UI, expo-router, 데이터 패칭, SDK 업그레이드, 배포/CI 등)을 구현할 때는 `expo@expo-plugins` 플러그인의 스킬(`expo:expo-native-ui`, `expo:expo-upgrade`, `expo:eas-workflows` 등)을 우선 활용한다.
 - 플러그인 스킬은 Claude Code 환경에서 동작하며, 이를 지원하지 않는 agent 는 이 항목을 무시한다.
 
 ## Design & UI

@@ -18,7 +18,7 @@ related:
   - `src/domain/<name>/store/<name>.state.ts` — slice 의 state + action 타입.
   - `src/domain/<name>/store/slice.ts` — `createXxxSlice` (default export).
   - `src/shared/store/rootStore.ts` — `useStore` (devtools + persist + immer).
-  - `src/shared/store/index.ts` — `SlicePattern<T,S>` 헬퍼 (immer + devtools middleware baked-in).
+  - `src/shared/store/types.d.ts` — `SlicePattern<T,S>` 헬퍼 (immer + devtools middleware baked-in).
 - State 타입은 파일 맨 아래 `export type { ... }` 로 노출한다.
 - Slice 함수 시그니처는 `SlicePattern<TSlice, BoundState>`. middleware 타입을 매번 다시 쓰지 않도록 헬퍼를 사용한다.
 - 모든 `set` 호출은 devtools action name 을 명시한다: `set(updater, false, { type: '<domain>/<action>' })`. 예: `user/loggedIn`, `user/loggedOut`. action 이름은 도메인 prefix + camelCase 동작명.
@@ -52,7 +52,7 @@ const { userinfo, isLoggedIn } = useStore();
 
 - `persist` 는 비-민감 정보(UI 설정, 캐시된 메타데이터 등) 에만 적용한다.
 - 토큰, refresh token, 기타 secret 은 `expo-secure-store` 에 보관하고 zustand store 에는 평문으로 보관하지 않는다.
-- 현재 `rootStore.ts` 는 `partialize` 없이 store 전체를 persist 한다. 새 필드를 slice 에 추가할 때 민감성을 검토하고, 일부만 persist 해야 한다면 `partialize` 로 화이트리스트 한다.
+- `rootStore.ts` 는 `partialize` 화이트리스트에 있는 필드만 persist 한다. 새 필드를 persist 하려면 민감성을 검토한 뒤 화이트리스트에 추가한다.
 - storage name 은 앱 식별자 (`template-expo-app`) 를 유지한다.
 
 ## Examples
@@ -112,13 +112,17 @@ export const useStore = create<BoundState>()(
       immer((...a) => ({
         ...createUserSlice(...a),
       })),
-      { name: 'template-expo-app', storage: createJSONStorage(() => AsyncStorage) },
+      {
+        name: 'template-expo-app',
+        storage: createJSONStorage(() => AsyncStorage),
+        partialize: (state) => ({ userinfo: state.userinfo }),
+      },
     ),
     { name: 'template-expo-app', enabled: process.env.NODE_ENV !== 'production' },
   ),
 );
 
-export type BoundState = UserState;
+export type BoundState = UserState; // slice 가 늘면 intersection: UserState & FooState
 ```
 
 소비자 (셀렉터만 발췌):

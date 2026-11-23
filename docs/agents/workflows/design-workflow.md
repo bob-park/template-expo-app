@@ -21,4 +21,4 @@ UI / design 작업(목업, 레이아웃 비교, 비주얼 컴포넌트) 요청 �
 5. 피드백 기반으로 반복한다. **최종 합의된 디자인만** 실제 `src/` 코드에 반영한다.
 6. 디자인 iteration 세션이 끝나면(사용자가 최종 승인하거나 작업을 중단하면) HTTP 서버를 정리한다.
 
-이 워크플로우는 agent-agnostic 이다. Claude Code 는 추가로 Visual Companion 을 쓸 수 있다(`CLAUDE.md` 참조); 위 6단계가 항상 계약으로 우선한다.
+이 워크플로우는 agent-agnostic 이다. 단, `AGENTS.md` 의 "Design & UI" 규칙(Visual Companion 으로 목업 3개 이상)이 2~3단계보다 우선하며, 나머지 단계는 위 계약을 따른다.
