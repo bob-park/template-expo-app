@@ -30,7 +30,6 @@ if (!i18n.isInitialized) {
       },
       lng: resolveDeviceLanguage(),
       fallbackLng: DEFAULT_LANGUAGE,
-      compatibilityJSON: 'v4',
       interpolation: { escapeValue: false },
       returnNull: false,
     })
